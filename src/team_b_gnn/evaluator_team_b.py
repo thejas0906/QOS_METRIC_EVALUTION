@@ -16,6 +16,7 @@ from src.team_b_gnn.utility_engine import CostPerformanceUtilityEngine
 from src.team_b_gnn.ranking_engine import CostPerformanceRankingEngine
 from src.team_b_gnn.metrics_economic import EconomicMetricsEvaluator
 from src.team_b_gnn.cold_start_handler import ColdStartInferenceHandler
+from src.team_b_gnn.confidence_estimator import GraphConfidenceEstimator
 
 
 class TeamBEvaluator:
@@ -23,15 +24,18 @@ class TeamBEvaluator:
 
     def __init__(
         self,
-        alpha: float = 0.7,
+        alpha: float = 0.5,
         beta: float = 0.3,
+        gamma: float = 0.2,
         k_values: List[int] = [5, 10, 20]
     ):
         self.alpha = alpha
         self.beta = beta
+        self.gamma = gamma
         self.k_values = k_values
-        self.utility_engine = CostPerformanceUtilityEngine(alpha=alpha, beta=beta)
+        self.utility_engine = CostPerformanceUtilityEngine(alpha=alpha, beta=beta, gamma=gamma)
         self.ranking_engine = CostPerformanceRankingEngine()
+        self.confidence_estimator = GraphConfidenceEstimator()
 
     def run_full_evaluation(
         self,
@@ -98,10 +102,27 @@ class TeamBEvaluator:
         composite_qos_pred = self.utility_engine.aggregate_composite_qos(full_pred_dict, normalizers)
         composite_qos_true = self.utility_engine.aggregate_composite_qos(ground_truth_qos, normalizers)
 
-        utility_pred = self.utility_engine.compute_utility(composite_qos_pred, service_costs)
-        utility_true = self.utility_engine.compute_utility(composite_qos_true, service_costs)
+        # Estimate prediction confidence from training graph
+        self.confidence_estimator.fit_from_edges(
+            edge_u=edge_u_train,
+            edge_s=edge_s_train,
+            num_users=num_u,
+            num_services=num_s
+        )
+        confidence_matrix = self.confidence_estimator.compute_confidence_matrix()
 
-        # Baseline QoS-only recommendations (equivalent to beta=0.0)
+        utility_pred = self.utility_engine.compute_utility(
+            composite_qos_matrix=composite_qos_pred,
+            service_costs=service_costs,
+            confidence_matrix=confidence_matrix
+        )
+        utility_true = self.utility_engine.compute_utility(
+            composite_qos_matrix=composite_qos_true,
+            service_costs=service_costs,
+            confidence_matrix=confidence_matrix
+        )
+
+        # Baseline QoS-only recommendations (equivalent to beta=0.0, gamma=0.0)
         utility_baseline = composite_qos_pred
 
         recs_cost_aware = self.ranking_engine.rank_all_users(utility_pred, k=max(self.k_values))
@@ -125,13 +146,15 @@ class TeamBEvaluator:
             k_list=self.k_values
         )
 
-        # 3. Economic Metrics
+        # 3. Economic & Reliability Metrics
         economic_metrics = EconomicMetricsEvaluator.compute_all_economic_metrics(
             cost_aware_recs=recs_cost_aware,
             baseline_recs=recs_baseline,
             composite_qos_matrix=composite_qos_true,
             service_costs=service_costs,
             utility_matrix=utility_true,
+            confidence_matrix=confidence_matrix,
+            num_services=num_s,
             k=10
         )
 

@@ -9,7 +9,7 @@ from src.team_b_gnn.graph_builder import BipartiteQoSGraphBuilder
 from src.team_b_gnn.utility_engine import CostPerformanceUtilityEngine
 from src.team_b_gnn.ranking_engine import CostPerformanceRankingEngine
 from src.team_b_gnn.cold_start_handler import ColdStartInferenceHandler
-from src.team_b_gnn.metrics_economic import EconomicMetricsEvaluator
+from src.team_b_gnn.confidence_estimator import GraphConfidenceEstimator
 
 __all__ = [
     "ServiceCostEngine",
@@ -19,4 +19,5 @@ __all__ = [
     "CostPerformanceRankingEngine",
     "ColdStartInferenceHandler",
     "EconomicMetricsEvaluator",
+    "GraphConfidenceEstimator",
 ]
