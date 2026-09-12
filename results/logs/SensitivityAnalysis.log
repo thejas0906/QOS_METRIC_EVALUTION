@@ -1,0 +1,23 @@
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] Running Cost-Performance Sensitivity Sweep over (alpha, beta)...
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.00, beta=1.00 -> Avg QoS: 0.4561 | Avg Cost: $0.0434 | Utility: -0.0338
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.10, beta=0.90 -> Avg QoS: 0.4634 | Avg Cost: $0.0439 | Utility: 0.0155
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.20, beta=0.80 -> Avg QoS: 0.4687 | Avg Cost: $0.0449 | Utility: 0.0656
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.30, beta=0.70 -> Avg QoS: 0.4785 | Avg Cost: $0.0483 | Utility: 0.1165
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.40, beta=0.60 -> Avg QoS: 0.5022 | Avg Cost: $0.0613 | Utility: 0.1698
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.50, beta=0.50 -> Avg QoS: 0.5576 | Avg Cost: $0.1082 | Utility: 0.2292
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.60, beta=0.40 -> Avg QoS: 0.7310 | Avg Cost: $0.3240 | Utility: 0.3117
+2026-09-12 12:37:04 [INFO] [SensitivityAnalysis] alpha=0.70, beta=0.30 -> Avg QoS: 0.8114 | Avg Cost: $0.4631 | Utility: 0.4306
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] Running Cost-Performance Sensitivity Sweep over (alpha, beta)...
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.00, beta=1.00 -> Avg QoS: 0.4561 | Avg Cost: $0.0434 | Utility: -0.0338
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.10, beta=0.90 -> Avg QoS: 0.4634 | Avg Cost: $0.0439 | Utility: 0.0155
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.20, beta=0.80 -> Avg QoS: 0.4687 | Avg Cost: $0.0449 | Utility: 0.0656
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.30, beta=0.70 -> Avg QoS: 0.4785 | Avg Cost: $0.0483 | Utility: 0.1165
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.40, beta=0.60 -> Avg QoS: 0.5022 | Avg Cost: $0.0613 | Utility: 0.1698
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.50, beta=0.50 -> Avg QoS: 0.5576 | Avg Cost: $0.1082 | Utility: 0.2292
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.60, beta=0.40 -> Avg QoS: 0.7310 | Avg Cost: $0.3240 | Utility: 0.3117
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.70, beta=0.30 -> Avg QoS: 0.8114 | Avg Cost: $0.4631 | Utility: 0.4306
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.80, beta=0.20 -> Avg QoS: 0.8248 | Avg Cost: $0.5015 | Utility: 0.5605
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=0.90, beta=0.10 -> Avg QoS: 0.8296 | Avg Cost: $0.5280 | Utility: 0.6943
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] alpha=1.00, beta=0.00 -> Avg QoS: 0.8310 | Avg Cost: $0.5572 | Utility: 0.8310
+2026-09-12 12:37:25 [INFO] [SensitivityAnalysis] Sensitivity data saved to results/metrics/sensitivity_alpha_beta.csv
+2026-09-12 12:37:26 [INFO] [SensitivityAnalysis] Saved Pareto frontier curve to results/figures/cost_utility_pareto.png
