@@ -11,8 +11,9 @@ epochs: 100
 batch_size: 2048
 early_stopping_patience: 10
 
-alpha: 0.7
+alpha: 0.5
 beta: 0.3
+gamma: 0.2
 
 top_k_list: [5, 10, 20]
 

@@ -63,8 +63,9 @@ class TeamBConfig:
     epochs: int = 150
     batch_size: int = 2048
     early_stopping_patience: int = 10
-    alpha: float = 0.7  # QoS importance in Utility
+    alpha: float = 0.5  # QoS importance in Utility
     beta: float = 0.3   # Cost penalty in Utility
+    gamma: float = 0.2  # Prediction reliability (confidence) in Utility
     cold_user_ratio: float = 0.10
     cold_service_ratio: float = 0.10
     cost_distribution: str = "pareto"  # pareto or lognormal

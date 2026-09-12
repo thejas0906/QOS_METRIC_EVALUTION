@@ -4,5 +4,6 @@ cost_min: 0.01
 cost_max: 1.00
 
 # Trade-off Weights
-alpha: 0.7  # QoS priority
+alpha: 0.5  # QoS priority
 beta: 0.3   # Cost sensitivity
+gamma: 0.2  # Prediction reliability / confidence weight

@@ -19,14 +19,15 @@ class CostPerformanceRankingEngine:
         utility_matrix: np.ndarray,
         qos_matrix: np.ndarray,
         service_costs: np.ndarray,
+        confidence_matrix: Optional[np.ndarray] = None,
         k: int = 10,
         interacted_mask: Optional[np.ndarray] = None
-    ) -> List[Tuple[int, float, float, float]]:
+    ) -> List[Tuple[int, float, float, float, float]]:
         """
         Ranks candidate services for a single user by utility score.
         
         Returns:
-            List of tuples: (service_id, utility_score, qos_score, raw_cost)
+            List of tuples: (service_id, utility_score, qos_score, raw_cost, confidence_score)
         """
         scores = np.copy(utility_matrix[user_id])
         if interacted_mask is not None:
@@ -36,11 +37,13 @@ class CostPerformanceRankingEngine:
 
         results = []
         for s_idx in top_indices:
+            conf_val = float(confidence_matrix[user_id, s_idx]) if confidence_matrix is not None else 1.0
             results.append((
                 int(s_idx),
                 float(scores[s_idx]),
                 float(qos_matrix[user_id, s_idx]),
-                float(service_costs[s_idx])
+                float(service_costs[s_idx]),
+                conf_val
             ))
         return results
 

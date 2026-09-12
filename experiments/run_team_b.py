@@ -36,6 +36,7 @@ def main():
     parser.add_argument("--lr", type=float, default=None, help="Learning rate override.")
     parser.add_argument("--alpha", type=float, default=None, help="Utility alpha (QoS weight).")
     parser.add_argument("--beta", type=float, default=None, help="Utility beta (Cost penalty).")
+    parser.add_argument("--gamma", type=float, default=None, help="Utility gamma (Confidence weight).")
     parser.add_argument("--synthetic", action="store_true", help="Force synthetic dataset generation.")
     args = parser.parse_args()
 
@@ -48,10 +49,12 @@ def main():
         overrides["alpha"] = args.alpha
     if args.beta is not None:
         overrides["beta"] = args.beta
+    if args.gamma is not None:
+        overrides["gamma"] = args.gamma
 
     config = ConfigManager.load_team_b_config(args.config, overrides=overrides)
     logger = ExperimentLogger.setup_logger("TeamB_Experiment", log_dir="results/logs/team_b")
-    logger.info(f"Initialized Team B Experiment: {config.model_name}, alpha={config.alpha}, beta={config.beta}")
+    logger.info(f"Initialized Team B Experiment: {config.model_name}, alpha={config.alpha}, beta={config.beta}, gamma={config.gamma}")
 
     # Set seed
     torch.manual_seed(42)
@@ -228,7 +231,7 @@ def main():
     decoder.load_state_dict(ckpt["decoder_state"])
 
     # 6. Evaluation
-    evaluator = TeamBEvaluator(alpha=config.alpha, beta=config.beta, k_values=config.top_k_list)
+    evaluator = TeamBEvaluator(alpha=config.alpha, beta=config.beta, gamma=config.gamma, k_values=config.top_k_list)
     eval_results = evaluator.run_full_evaluation(
         model=model,
         decoder=decoder,
@@ -253,10 +256,12 @@ def main():
     for k in config.top_k_list:
         logger.info(f"Top-{k} -> Precision: {rec['precision'][k]:.4f} | Recall: {rec['recall'][k]:.4f} | NDCG: {rec['ndcg'][k]:.4f}")
 
-    logger.info("=== Team B Economic Evaluation ===")
+    logger.info("=== Team B Economic & Reliability Evaluation ===")
     econ = eval_results["economic"]
     logger.info(f"Average Cost: ${econ['average_cost']:.4f} vs Baseline: ${econ['baseline_qos_cost']:.4f}")
-    logger.info(f"Cost Savings: {econ['cost_savings_pct']:.2f}% | CP Ratio: {econ['cost_performance_ratio']:.4f} | Mean Utility: {econ['mean_utility']:.4f}")
+    conf_str = f" | Avg Confidence: {econ['average_confidence']:.4f}" if "average_confidence" in econ else ""
+    cov_str = f" | Coverage: {econ['recommendation_coverage']:.2%}" if "recommendation_coverage" in econ else ""
+    logger.info(f"Cost Savings: {econ['cost_savings_pct']:.2f}% | CP Ratio: {econ['cost_performance_ratio']:.4f} | Mean Utility: {econ['mean_utility']:.4f}{conf_str}{cov_str}")
 
     # 7. Save Metrics JSON
     os.makedirs("results/metrics", exist_ok=True)
