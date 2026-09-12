@@ -25,3 +25,55 @@
 2026-09-12 12:32:59 [INFO] [TeamB_Experiment] Cost Savings: 55.55% | CP Ratio: 3.6520 | Mean Utility: 0.3190
 2026-09-12 12:32:59 [INFO] [TeamB_Experiment] Metrics saved to results/metrics/team_b_results.json
 2026-09-12 12:33:00 [INFO] [TeamB_Experiment] Generated visualization figures in results/figures/
+2026-09-12 13:10:20 [INFO] [TeamB_Experiment] Initialized Team B Experiment: HeteroGraphSAGE, alpha=0.7, beta=0.3
+2026-09-12 13:10:20 [INFO] [TeamB_Experiment] Generated service costs: range [$0.01, $1.00], mean=$0.38
+2026-09-12 13:10:20 [INFO] [TeamB_Experiment] Graph nodes: 339 users, 500 services.
+2026-09-12 13:10:20 [INFO] [TeamB_Experiment] Interaction edges - Train: 96390, Val: 13770, Test: 27540
+2026-09-12 13:10:23 [INFO] [TeamB_Experiment] Starting GraphSAGE training for 50 epochs...
+2026-09-12 13:10:55 [INFO] [TeamB_Experiment] Initialized Team B Experiment: HeteroGraphSAGE, alpha=0.7, beta=0.3
+2026-09-12 13:10:55 [INFO] [TeamB_Experiment] Generated service costs: range [$0.01, $1.00], mean=$0.38
+2026-09-12 13:10:55 [INFO] [TeamB_Experiment] Graph nodes: 339 users, 500 services.
+2026-09-12 13:10:55 [INFO] [TeamB_Experiment] Interaction edges - Train: 96390, Val: 13770, Test: 27540
+2026-09-12 13:10:58 [INFO] [TeamB_Experiment] Starting GraphSAGE training for 50 epochs...
+2026-09-12 13:10:58 [INFO] [TeamB_Experiment] Epoch 001 | Train Loss: 2.2068 | Val Loss: 2.1766
+2026-09-12 13:11:01 [INFO] [TeamB_Experiment] Epoch 010 | Train Loss: 2.1591 | Val Loss: 2.1582
+2026-09-12 13:11:04 [INFO] [TeamB_Experiment] Epoch 020 | Train Loss: 2.1502 | Val Loss: 2.1499
+2026-09-12 13:11:07 [INFO] [TeamB_Experiment] Epoch 030 | Train Loss: 2.1405 | Val Loss: 2.1400
+2026-09-12 13:11:10 [INFO] [TeamB_Experiment] Epoch 040 | Train Loss: 2.1330 | Val Loss: 2.1322
+2026-09-12 13:11:13 [INFO] [TeamB_Experiment] Epoch 050 | Train Loss: 2.1270 | Val Loss: 2.1266
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] === Team B Multi-Attribute Prediction Results ===
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] [availability] RMSE: 0.0290 | MAE: 0.0233
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] [latency] RMSE: 375.4920 | MAE: 339.9344
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] [reliability] RMSE: 0.0396 | MAE: 0.0320
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] [response_time] RMSE: 0.4044 | MAE: 0.3022
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] [throughput] RMSE: 2056.8274 | MAE: 1827.3954
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] === Team B Top-K Recommendation Results ===
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] Top-5 -> Precision: 0.0248 | Recall: 0.0012 | NDCG: 0.6860
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] Top-10 -> Precision: 0.0478 | Recall: 0.0048 | NDCG: 0.7068
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] Top-20 -> Precision: 0.0732 | Recall: 0.0146 | NDCG: 0.7307
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] === Team B Economic Evaluation ===
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] Average Cost: $0.1484 vs Baseline: $0.6384
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] Cost Savings: 76.75% | CP Ratio: 3.8057 | Mean Utility: 0.3220
+2026-09-12 13:11:14 [INFO] [TeamB_Experiment] Metrics saved to results/metrics/team_b_results.json
+2026-09-12 13:11:15 [INFO] [TeamB_Experiment] Generated visualization figures in results/figures/
+2026-09-12 13:29:54 [INFO] [TeamB_Experiment] Initialized Team B Experiment: HeteroGraphSAGE, alpha=0.7, beta=0.3
+2026-09-12 13:29:55 [INFO] [TeamB_Experiment] Generated service costs: range [$0.01, $1.00], mean=$0.53
+2026-09-12 13:29:56 [INFO] [TeamB_Experiment] Graph nodes: 339 users, 5825 services.
+2026-09-12 13:29:56 [INFO] [TeamB_Experiment] Interaction edges - Train: 1039052, Val: 148435, Test: 296871
+2026-09-12 13:29:59 [INFO] [TeamB_Experiment] Starting GraphSAGE training for 2 epochs...
+2026-09-12 13:30:03 [INFO] [TeamB_Experiment] Epoch 001 | Train Loss: 0.6972 | Val Loss: 0.6786
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] === Team B Multi-Attribute Prediction Results ===
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] [availability] RMSE: 0.0924 | MAE: 0.0732
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] [latency] RMSE: 632.0683 | MAE: 263.8560
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] [reliability] RMSE: 0.1089 | MAE: 0.0886
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] [response_time] RMSE: 1.9301 | MAE: 0.9637
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] [throughput] RMSE: 120.2205 | MAE: 46.7513
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] === Team B Top-K Recommendation Results ===
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] Top-5 -> Precision: 0.0838 | Recall: 0.0004 | NDCG: 0.4124
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] Top-10 -> Precision: 0.0735 | Recall: 0.0006 | NDCG: 0.4250
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] Top-20 -> Precision: 0.0636 | Recall: 0.0011 | NDCG: 0.4400
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] === Team B Economic Evaluation ===
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] Average Cost: $0.0791 vs Baseline: $0.5086
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] Cost Savings: 84.45% | CP Ratio: 4.9363 | Mean Utility: 0.2430
+2026-09-12 13:30:12 [INFO] [TeamB_Experiment] Metrics saved to results/metrics/team_b_results.json
+2026-09-12 13:30:15 [INFO] [TeamB_Experiment] Generated visualization figures in results/figures/

@@ -2,3 +2,7 @@
 2026-09-12 12:36:49 [INFO] [CrossParadigmComparison] Generated LaTeX publication tables at results/metrics/latex_tables.tex
 2026-09-12 12:36:49 [INFO] [CrossParadigmComparison] Generated comparative CSV summary at results/metrics/comparative_summary.csv
 2026-09-12 12:36:49 [INFO] [CrossParadigmComparison] Saved comparative figures to results/figures/comparative_topk_curves.png
+2026-09-12 13:14:34 [INFO] [CrossParadigmComparison] Starting Cross-Paradigm Comparison (Team A vs Team B)...
+2026-09-12 13:14:34 [INFO] [CrossParadigmComparison] Generated LaTeX publication tables at results/metrics/latex_tables.tex
+2026-09-12 13:14:34 [INFO] [CrossParadigmComparison] Generated comparative CSV summary at results/metrics/comparative_summary.csv
+2026-09-12 13:14:35 [INFO] [CrossParadigmComparison] Saved comparative figures to results/figures/comparative_topk_curves.png

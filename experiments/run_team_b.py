@@ -152,7 +152,15 @@ def main():
         lr=config.lr,
         weight_decay=config.weight_decay
     )
-    criterion = nn.MSELoss()
+    # Attribute scale balancing so all 5 QoS dimensions contribute equally to gradients
+    qos_scales = torch.tensor([
+        max(float(np.std(train_edges["qos"][:, col])), 1.0)
+        for col in range(len(attr_names))
+    ], dtype=torch.float32)
+
+    def balanced_loss(preds: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
+        normalized_diff = (preds - targets) / qos_scales
+        return torch.mean(normalized_diff ** 2)
 
     # PyTorch Tensors
     u_x_t = torch.from_numpy(graph_data.user_features).float()
@@ -180,9 +188,11 @@ def main():
 
         # Predict QoS on training edges
         preds_train = decoder(h_u[e_u_train], h_s[e_s_train])
-        train_loss = criterion(preds_train, e_qos_train)
+        train_loss = balanced_loss(preds_train, e_qos_train)
 
         train_loss.backward()
+        # Gradient clipping for stable convergence
+        torch.nn.utils.clip_grad_norm_(list(model.parameters()) + list(decoder.parameters()), max_norm=5.0)
         optimizer.step()
 
         # Validation
@@ -191,7 +201,7 @@ def main():
         with torch.no_grad():
             h_u_val, h_s_val = model(u_x_t, s_x_t, e_u_train, e_s_train)
             preds_val = decoder(h_u_val[e_u_val], h_s_val[e_s_val])
-            val_loss = criterion(preds_val, e_qos_val).item()
+            val_loss = balanced_loss(preds_val, e_qos_val).item()
 
         if val_loss < best_val_loss:
             best_val_loss = val_loss

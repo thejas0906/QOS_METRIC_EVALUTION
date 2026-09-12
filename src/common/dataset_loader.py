@@ -39,12 +39,22 @@ class WSDreamLoader:
         service_path = os.path.join(self.data_dir, service_file)
 
         if os.path.exists(user_path):
-            df_users = pd.read_csv(user_path, sep="\t", header=None, names=["user_id", "ip", "country", "as"])
+            try:
+                # WS-DREAM userlist has 2 header rows and 7 tab-delimited columns
+                user_cols = ["user_id", "ip", "country", "ip_no", "as", "latitude", "longitude"]
+                df_users = pd.read_csv(user_path, sep="\t", skiprows=2, header=None, names=user_cols, encoding="latin-1")
+            except Exception:
+                df_users = pd.read_csv(user_path, sep=r"\s+", header=None)
         else:
             df_users = pd.DataFrame({"user_id": np.arange(DEFAULT_NUM_USERS)})
 
         if os.path.exists(service_path):
-            df_services = pd.read_csv(service_path, sep="\t", header=None, names=["service_id", "wsdl_url", "provider", "country"])
+            try:
+                # WS-DREAM wslist has 2 header rows and 9 tab-delimited columns
+                ws_cols = ["service_id", "wsdl_url", "provider", "ip", "country", "ip_no", "as", "latitude", "longitude"]
+                df_services = pd.read_csv(service_path, sep="\t", skiprows=2, header=None, names=ws_cols, encoding="latin-1")
+            except Exception:
+                df_services = pd.read_csv(service_path, sep=r"\s+", header=None)
         else:
             df_services = pd.DataFrame({"service_id": np.arange(DEFAULT_NUM_SERVICES)})
 
@@ -118,25 +128,43 @@ class WSDreamLoader:
         If not found, synthesizes a scientifically calibrated dataset.
         """
         rt_path = os.path.join(self.data_dir, "rtmatrix.txt")
+        if not os.path.exists(rt_path):
+            rt_path = os.path.join(self.data_dir, "rtMatrix.txt")
+
         tp_path = os.path.join(self.data_dir, "tpmatrix.txt")
+        if not os.path.exists(tp_path):
+            tp_path = os.path.join(self.data_dir, "tpMatrix.txt")
 
         if os.path.exists(rt_path) and os.path.exists(tp_path):
             rt = self.load_raw_matrix(rt_path)
             tp = self.load_raw_matrix(tp_path)
-            u_count, s_count = rt.shape
 
             # Synthesize companion attributes based on actual RT and TP
             rng = np.random.RandomState(seed)
-            availability = np.clip(0.95 - (rt / np.max(rt)) * 0.15 + rng.normal(0, 0.02, rt.shape), 0.5, 1.0)
-            reliability = np.clip(0.92 - (rt / np.max(rt)) * 0.18 + rng.normal(0, 0.02, rt.shape), 0.5, 1.0)
-            latency = np.clip(rt * 300.0 + rng.normal(0, 10.0, rt.shape), 5.0, 5000.0)
+            valid_mask = (rt > 0) & (tp > 0)
+            max_rt = float(np.max(rt[valid_mask])) if np.any(valid_mask) else 1.0
+
+            # Default missing to -1.0
+            availability = np.full_like(rt, -1.0, dtype=np.float32)
+            reliability = np.full_like(rt, -1.0, dtype=np.float32)
+            latency = np.full_like(rt, -1.0, dtype=np.float32)
+
+            n_valid = int(np.sum(valid_mask))
+            if n_valid > 0:
+                avail_valid = np.clip(0.95 - (rt[valid_mask] / max_rt) * 0.15 + rng.normal(0, 0.02, size=n_valid), 0.5, 1.0)
+                rel_valid = np.clip(0.92 - (rt[valid_mask] / max_rt) * 0.18 + rng.normal(0, 0.02, size=n_valid), 0.5, 1.0)
+                lat_valid = np.clip(rt[valid_mask] * 300.0 + rng.normal(0, 10.0, size=n_valid), 5.0, 5000.0)
+
+                availability[valid_mask] = avail_valid.astype(np.float32)
+                reliability[valid_mask] = rel_valid.astype(np.float32)
+                latency[valid_mask] = lat_valid.astype(np.float32)
 
             return {
                 QoSAttribute.RESPONSE_TIME.value: rt,
-                QoSAttribute.AVAILABILITY.value: availability.astype(np.float32),
-                QoSAttribute.RELIABILITY.value: reliability.astype(np.float32),
+                QoSAttribute.AVAILABILITY.value: availability,
+                QoSAttribute.RELIABILITY.value: reliability,
                 QoSAttribute.THROUGHPUT.value: tp,
-                QoSAttribute.LATENCY.value: latency.astype(np.float32),
+                QoSAttribute.LATENCY.value: latency,
             }
 
         # Otherwise synthesize calibrated dataset

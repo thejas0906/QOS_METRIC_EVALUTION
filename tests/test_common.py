@@ -91,3 +91,17 @@ def test_dataset_loader_synthetic():
         assert attr in dataset
         assert dataset[attr].shape == (20, 30)
         assert not np.any(np.isnan(dataset[attr]))
+
+
+def test_dataset_loader_real_wsdream():
+    loader = WSDreamLoader(data_dir="data/raw/ws_dream")
+    df_users, df_services = loader.load_metadata()
+    assert len(df_users) == 339
+    assert len(df_services) == 5825
+    assert "country" in df_users.columns
+    assert "wsdl_url" in df_services.columns
+
+    dataset = loader.load_or_generate_dataset()
+    assert QoSAttribute.RESPONSE_TIME.value in dataset
+    assert dataset[QoSAttribute.RESPONSE_TIME.value].shape == (339, 5825)
+
