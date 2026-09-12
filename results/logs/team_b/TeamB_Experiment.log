@@ -97,3 +97,23 @@
 2026-09-12 15:54:26 [INFO] [TeamB_Experiment] Cost Savings: 70.85% | CP Ratio: 3.0341 | Mean Utility: 0.3435 | Avg Confidence: 0.8145 | Coverage: 4.91%
 2026-09-12 15:54:26 [INFO] [TeamB_Experiment] Metrics saved to results/metrics/team_b_results.json
 2026-09-12 15:54:28 [INFO] [TeamB_Experiment] Generated visualization figures in results/figures/
+2026-09-12 21:35:05 [INFO] [TeamB_Experiment] Initialized Team B Experiment: HeteroGraphSAGE, alpha=0.5, beta=0.3, gamma=0.2
+2026-09-12 21:35:06 [INFO] [TeamB_Experiment] Generated service costs: range [$0.01, $1.00], mean=$0.53
+2026-09-12 21:35:07 [INFO] [TeamB_Experiment] Graph nodes: 339 users, 5825 services.
+2026-09-12 21:35:07 [INFO] [TeamB_Experiment] Interaction edges - Train: 1039052, Val: 148435, Test: 296871
+2026-09-12 21:35:10 [INFO] [TeamB_Experiment] Evaluation only mode: skipping training and loading best model checkpoint.
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] === Team B Multi-Attribute Prediction Results ===
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] [availability] RMSE: 0.0924 | MAE: 0.0732
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] [latency] RMSE: 632.0683 | MAE: 263.8560
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] [reliability] RMSE: 0.1089 | MAE: 0.0886
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] [response_time] RMSE: 1.9301 | MAE: 0.9637
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] [throughput] RMSE: 120.2205 | MAE: 46.7513
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] === Team B Top-K Recommendation Results ===
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] Top-5 -> Precision: 0.2549 | Recall: 0.0067 | NDCG: 0.6518
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] Top-10 -> Precision: 0.3493 | Recall: 0.0182 | NDCG: 0.6907
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] Top-20 -> Precision: 0.4382 | Recall: 0.0454 | NDCG: 0.7447
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] === Team B Economic & Reliability Evaluation ===
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] Average Cost: $0.1575 vs Baseline: $0.5403
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] Cost Savings: 70.85% | CP Ratio: 3.0341 | Mean Utility: 0.3435 | Avg Confidence: 0.8145 | Coverage: 4.91%
+2026-09-12 21:35:16 [INFO] [TeamB_Experiment] Metrics saved to results/metrics/team_b_results.json
+2026-09-12 21:35:19 [INFO] [TeamB_Experiment] Generated visualization figures in results/figures/

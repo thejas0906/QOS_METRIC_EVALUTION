@@ -1,0 +1,751 @@
+{
+  "benchmark_metadata": {
+    "dataset": "WS-DREAM #1 (339 users x 5825 web services)",
+    "models_evaluated": [
+      "Team A (BiasedMF)",
+      "Team B (HeteroGraphSAGE)"
+    ],
+    "benchmarks_included": [
+      "QoS Prediction Accuracy (MAE/RMSE)",
+      "Top-K Recommendation Quality (Precision, Recall, NDCG)",
+      "Cost-Performance-Confidence Tradeoff (Paradigms A, B, C)",
+      "Sparsity Robustness (50% to 95% missing ratio)",
+      "Cold-Start Inductive Generalization (Users and Services)",
+      "Cost Sensitivity & Pareto Sweep"
+    ]
+  },
+  "qos_prediction_accuracy": [
+    {
+      "QoS_Attribute": "availability",
+      "Team_A_BiasedMF_RMSE": 0.3267342150211334,
+      "Team_B_GraphSAGE_RMSE": 0.0923648700118064,
+      "Best_RMSE": "Team B",
+      "RMSE_Improvement_Pct": 71.73088529897849,
+      "Team_A_BiasedMF_MAE": 0.1882269978523254,
+      "Team_B_GraphSAGE_MAE": 0.0732439011335372,
+      "Best_MAE": "Team B",
+      "MAE_Improvement_Pct": 61.08746249515109
+    },
+    {
+      "QoS_Attribute": "latency",
+      "Team_A_BiasedMF_RMSE": 529.455322265625,
+      "Team_B_GraphSAGE_RMSE": 632.0682983398438,
+      "Best_RMSE": "Team A",
+      "RMSE_Improvement_Pct": -19.38085646870471,
+      "Team_A_BiasedMF_MAE": 257.6280212402344,
+      "Team_B_GraphSAGE_MAE": 263.8559875488281,
+      "Best_MAE": "Team A",
+      "MAE_Improvement_Pct": -2.4174258213885294
+    },
+    {
+      "QoS_Attribute": "reliability",
+      "Team_A_BiasedMF_RMSE": 0.3232125341892242,
+      "Team_B_GraphSAGE_RMSE": 0.1089441552758216,
+      "Best_RMSE": "Team B",
+      "RMSE_Improvement_Pct": 66.29333836043607,
+      "Team_A_BiasedMF_MAE": 0.1875327229499817,
+      "Team_B_GraphSAGE_MAE": 0.0886406227946281,
+      "Best_MAE": "Team B",
+      "MAE_Improvement_Pct": 52.73325028279455
+    },
+    {
+      "QoS_Attribute": "response_time",
+      "Team_A_BiasedMF_RMSE": 1.7901195287704468,
+      "Team_B_GraphSAGE_RMSE": 1.9300941228866575,
+      "Best_RMSE": "Team A",
+      "RMSE_Improvement_Pct": -7.819287587592168,
+      "Team_A_BiasedMF_MAE": 0.8733486533164978,
+      "Team_B_GraphSAGE_MAE": 0.9637144804000854,
+      "Best_MAE": "Team A",
+      "MAE_Improvement_Pct": -10.347050601203534
+    },
+    {
+      "QoS_Attribute": "throughput",
+      "Team_A_BiasedMF_RMSE": 105.3586196899414,
+      "Team_B_GraphSAGE_RMSE": 120.22053527832033,
+      "Best_RMSE": "Team A",
+      "RMSE_Improvement_Pct": -14.106027235470489,
+      "Team_A_BiasedMF_MAE": 50.4361572265625,
+      "Team_B_GraphSAGE_MAE": 46.75131988525391,
+      "Best_MAE": "Team B",
+      "MAE_Improvement_Pct": 7.305943878230184
+    }
+  ],
+  "top_k_recommendation": {
+    "team_a": {
+      "precision": {
+        "5": 0.27964601769911507,
+        "10": 0.23952802359882006,
+        "20": 0.20766961651917407
+      },
+      "recall": {
+        "5": 0.12454610406848825,
+        "10": 0.2130641682242411,
+        "20": 0.3689401056267272
+      },
+      "ndcg": {
+        "5": 0.8757231774340563,
+        "10": 0.8920178584017241,
+        "20": 0.9065120278972661
+      }
+    },
+    "team_b": {
+      "precision": {
+        "5": 0.2549019607843137,
+        "10": 0.3493464052287582,
+        "20": 0.43823529411764706
+      },
+      "recall": {
+        "5": 0.006659324098309009,
+        "10": 0.01815379178653938,
+        "20": 0.04538018504075797
+      },
+      "ndcg": {
+        "5": 0.6518046809842547,
+        "10": 0.6906783653034279,
+        "20": 0.744692973808372
+      }
+    }
+  },
+  "economic_and_confidence": {
+    "average_cost": 0.15749679746873238,
+    "baseline_qos_cost": 0.540336047122681,
+    "cost_savings_pct": 70.85206543087187,
+    "cost_performance_ratio": 3.034069246035735,
+    "mean_utility": 0.3435451940578573,
+    "recommendation_coverage": 0.04909871244635193,
+    "average_confidence": 0.8145499889757118,
+    "confidence_distribution": {
+      "mean": 0.814549990738529,
+      "std": 0.04123990293160047,
+      "min": 0.447621613740921,
+      "max": 0.8453810811042786,
+      "median": 0.833695650100708
+    }
+  },
+  "cold_start": {
+    "cold_users": {
+      "mode": "user",
+      "cold_count": 33,
+      "prediction_errors": {
+        "availability": {
+          "rmse": 0.5391753911972046,
+          "mae": 0.22941003739833832,
+          "nrmse": 0.2695876955986023
+        },
+        "latency": {
+          "rmse": 654.1661376953125,
+          "mae": 283.0274353027344,
+          "nrmse": 0.13080706612583734
+        },
+        "reliability": {
+          "rmse": 0.5103620886802673,
+          "mae": 0.20156879723072052,
+          "nrmse": 0.25518104434013367
+        },
+        "response_time": {
+          "rmse": 2.0392799377441406,
+          "mae": 1.080059289932251,
+          "nrmse": 0.09715020786747948
+        },
+        "throughput": {
+          "rmse": 115.57246398925781,
+          "mae": 43.20209503173828,
+          "nrmse": 0.11545700698227554
+        }
+      }
+    },
+    "cold_services": {
+      "mode": "service",
+      "cold_count": 582,
+      "prediction_errors": {
+        "availability": {
+          "rmse": 0.569771409034729,
+          "mae": 0.24931453168392181,
+          "nrmse": 0.2848857045173645
+        },
+        "latency": {
+          "rmse": 696.453857421875,
+          "mae": 285.24444580078125,
+          "nrmse": 0.1392629189005949
+        },
+        "reliability": {
+          "rmse": 0.5390846729278564,
+          "mae": 0.21728774905204773,
+          "nrmse": 0.2695423364639282
+        },
+        "response_time": {
+          "rmse": 2.1992275714874268,
+          "mae": 1.104100227355957,
+          "nrmse": 0.10474507244808776
+        },
+        "throughput": {
+          "rmse": 115.55767059326172,
+          "mae": 44.140132904052734,
+          "nrmse": 0.11544222836489682
+        }
+      }
+    }
+  },
+  "three_paradigm_tradeoff": {
+    "Paradigm A (QoS-Only)": {
+      "params": {
+        "alpha": 1.0,
+        "beta": 0.0,
+        "gamma": 0.0
+      },
+      "recommendation": {
+        "precision": {
+          "5": 0.18584070796460175,
+          "10": 0.19852507374631273,
+          "20": 0.1933628318584071
+        },
+        "recall": {
+          "5": 0.0007975952618383629,
+          "10": 0.0017040691999145874,
+          "20": 0.0033195183930759954
+        },
+        "ndcg": {
+          "5": 0.6623264798832112,
+          "10": 0.672033095452871,
+          "20": 0.6828379667804773
+        }
+      },
+      "economic": {
+        "average_cost": 0.5042616234416455,
+        "baseline_qos_cost": 0.5042616234416455,
+        "cost_savings_pct": 0.0,
+        "cost_performance_ratio": 1.320837966584489,
+        "mean_utility": 0.661296291864727,
+        "recommendation_coverage": 0.1905579399141631,
+        "average_confidence": 0.949199206885335,
+        "confidence_distribution": {
+          "mean": 0.9491992077292946,
+          "std": 0.15349956642606102,
+          "min": 0.23539765179157257,
+          "max": 0.9999997019767761,
+          "median": 0.9963419437408447
+        }
+      }
+    },
+    "Paradigm B (QoS + Cost)": {
+      "params": {
+        "alpha": 0.7,
+        "beta": 0.3,
+        "gamma": 0.0
+      },
+      "recommendation": {
+        "precision": {
+          "5": 0.07905604719764012,
+          "10": 0.07020648967551622,
+          "20": 0.05899705014749264
+        },
+        "recall": {
+          "5": 0.0003392963399040349,
+          "10": 0.0006026308126653753,
+          "20": 0.001012822723655961
+        },
+        "ndcg": {
+          "5": 0.4150543779078215,
+          "10": 0.42692105559765414,
+          "20": 0.44006836643685665
+        }
+      },
+      "economic": {
+        "average_cost": 0.08267899685069523,
+        "baseline_qos_cost": 0.5042616234416455,
+        "cost_savings_pct": 83.60394822703316,
+        "cost_performance_ratio": 4.748156614110042,
+        "mean_utility": 0.2438264584119341,
+        "recommendation_coverage": 0.023004291845493564,
+        "average_confidence": 0.7006894095984884,
+        "confidence_distribution": {
+          "mean": 0.70068940759848,
+          "std": 0.28937508096912495,
+          "min": 0.23539765179157257,
+          "max": 0.9985728859901428,
+          "median": 0.756586879491806
+        }
+      }
+    },
+    "Paradigm C (QoS + Cost + Confidence)": {
+      "params": {
+        "alpha": 0.5,
+        "beta": 0.3,
+        "gamma": 0.2
+      },
+      "recommendation": {
+        "precision": {
+          "5": 0.17640117994100296,
+          "10": 0.18997050147492628,
+          "20": 0.19159292035398234
+        },
+        "recall": {
+          "5": 0.0007570866091888538,
+          "10": 0.001630648081329839,
+          "20": 0.0032891466756987025
+        },
+        "ndcg": {
+          "5": 0.6257750100097129,
+          "10": 0.6352332386902999,
+          "20": 0.6435432332005837
+        }
+      },
+      "economic": {
+        "average_cost": 0.07053799407452258,
+        "baseline_qos_cost": 0.5042616234416455,
+        "cost_savings_pct": 86.01162753709228,
+        "cost_performance_ratio": 5.217141052776901,
+        "mean_utility": 0.3591891374208231,
+        "recommendation_coverage": 0.012875536480686695,
+        "average_confidence": 0.9840812338488644,
+        "confidence_distribution": {
+          "mean": 0.9840812311235783,
+          "std": 0.027038273684702612,
+          "min": 0.7432478666305542,
+          "max": 0.9993709325790405,
+          "median": 0.993322104215622
+        }
+      }
+    }
+  },
+  "sparsity_robustness": {
+    "density_levels": [
+      0.5,
+      0.3,
+      0.2,
+      0.1,
+      0.05
+    ],
+    "results": {
+      "0.50": {
+        "density": 0.5,
+        "missing_pct": 50.0,
+        "team_a": {
+          "availability": {
+            "rmse": 0.02253318950533867,
+            "mae": 0.017454253509640694,
+            "nrmse": 0.10225015673820095
+          },
+          "latency": {
+            "rmse": 307.8763427734375,
+            "mae": 115.26223754882812,
+            "nrmse": 0.06163690546014765
+          },
+          "reliability": {
+            "rmse": 0.023611286655068398,
+            "mae": 0.018110990524291992,
+            "nrmse": 0.08656613536148362
+          },
+          "response_time": {
+            "rmse": 1.0488351583480835,
+            "mae": 0.38524264097213745,
+            "nrmse": 0.05273443418808074
+          },
+          "throughput": {
+            "rmse": 36.31849670410156,
+            "mae": 12.421637535095215,
+            "nrmse": 0.036321294401460855
+          }
+        },
+        "team_b": {
+          "availability": {
+            "rmse": 0.02515876106917858,
+            "mae": 0.01894802413880825,
+            "nrmse": 0.11416436461660132
+          },
+          "latency": {
+            "rmse": 640.5396118164062,
+            "mae": 264.3879089355469,
+            "nrmse": 0.12823615852180306
+          },
+          "reliability": {
+            "rmse": 0.027319522574543953,
+            "mae": 0.020071465522050858,
+            "nrmse": 0.10016165250746385
+          },
+          "response_time": {
+            "rmse": 1.7949448823928833,
+            "mae": 0.8271577954292297,
+            "nrmse": 0.09024812146921371
+          },
+          "throughput": {
+            "rmse": 120.78824615478516,
+            "mae": 44.20376205444336,
+            "nrmse": 0.12079755075128468
+          }
+        }
+      },
+      "0.30": {
+        "density": 0.3,
+        "missing_pct": 70.0,
+        "team_a": {
+          "availability": {
+            "rmse": 0.022607645019888878,
+            "mae": 0.017515696585178375,
+            "nrmse": 0.10258801783110032
+          },
+          "latency": {
+            "rmse": 324.4382629394531,
+            "mae": 130.06031799316406,
+            "nrmse": 0.06495260519308371
+          },
+          "reliability": {
+            "rmse": 0.02368071861565113,
+            "mae": 0.018174881115555763,
+            "nrmse": 0.08682069397940323
+          },
+          "response_time": {
+            "rmse": 1.1069165468215942,
+            "mae": 0.4370069205760956,
+            "nrmse": 0.05565471115785048
+          },
+          "throughput": {
+            "rmse": 39.27352523803711,
+            "mae": 14.375931739807129,
+            "nrmse": 0.03927655056804302
+          }
+        },
+        "team_b": {
+          "availability": {
+            "rmse": 0.0253054890781641,
+            "mae": 0.018944626674056053,
+            "nrmse": 0.11483018078581692
+          },
+          "latency": {
+            "rmse": 640.5313720703125,
+            "mae": 264.3958740234375,
+            "nrmse": 0.1282345089229855
+          },
+          "reliability": {
+            "rmse": 0.028137674555182457,
+            "mae": 0.021059833467006683,
+            "nrmse": 0.10316124571629118
+          },
+          "response_time": {
+            "rmse": 1.7762343883514404,
+            "mae": 0.8212629556655884,
+            "nrmse": 0.08930737562483433
+          },
+          "throughput": {
+            "rmse": 120.72090148925781,
+            "mae": 44.09741973876953,
+            "nrmse": 0.1207302008980428
+          }
+        }
+      },
+      "0.20": {
+        "density": 0.2,
+        "missing_pct": 80.0,
+        "team_a": {
+          "availability": {
+            "rmse": 0.02267930470407009,
+            "mae": 0.017587099224328995,
+            "nrmse": 0.1029131921228979
+          },
+          "latency": {
+            "rmse": 346.14520263671875,
+            "mae": 145.5813446044922,
+            "nrmse": 0.06929833886620997
+          },
+          "reliability": {
+            "rmse": 0.023746995255351067,
+            "mae": 0.01824110560119152,
+            "nrmse": 0.08706368423433444
+          },
+          "response_time": {
+            "rmse": 1.1800788640975952,
+            "mae": 0.4900358021259308,
+            "nrmse": 0.05933324288395641
+          },
+          "throughput": {
+            "rmse": 42.9446907043457,
+            "mae": 16.551393508911133,
+            "nrmse": 0.04294799883267376
+          }
+        },
+        "team_b": {
+          "availability": {
+            "rmse": 0.025094036012887955,
+            "mae": 0.018874093890190125,
+            "nrmse": 0.11387065798669713
+          },
+          "latency": {
+            "rmse": 640.586669921875,
+            "mae": 264.50701904296875,
+            "nrmse": 0.12824557956393895
+          },
+          "reliability": {
+            "rmse": 0.027474211528897285,
+            "mae": 0.02064840868115425,
+            "nrmse": 0.10072878911281281
+          },
+          "response_time": {
+            "rmse": 1.779841661453247,
+            "mae": 0.823635995388031,
+            "nrmse": 0.08948874588542444
+          },
+          "throughput": {
+            "rmse": 120.84213256835938,
+            "mae": 44.28566360473633,
+            "nrmse": 0.1208514413158533
+          }
+        }
+      },
+      "0.10": {
+        "density": 0.1,
+        "missing_pct": 90.0,
+        "team_a": {
+          "availability": {
+            "rmse": 0.02299557253718376,
+            "mae": 0.01785515807569027,
+            "nrmse": 0.10434833895372991
+          },
+          "latency": {
+            "rmse": 404.5520324707031,
+            "mae": 184.944580078125,
+            "nrmse": 0.08099139789203266
+          },
+          "reliability": {
+            "rmse": 0.02415667474269867,
+            "mae": 0.018558528274297714,
+            "nrmse": 0.08856569344182263
+          },
+          "response_time": {
+            "rmse": 1.3724533319473267,
+            "mae": 0.6213546991348267,
+            "nrmse": 0.06900564815521631
+          },
+          "throughput": {
+            "rmse": 51.453121185302734,
+            "mae": 21.772775650024414,
+            "nrmse": 0.05145708473760613
+          }
+        },
+        "team_b": {
+          "availability": {
+            "rmse": 0.024897849187254906,
+            "mae": 0.018808744847774506,
+            "nrmse": 0.11298040968579874
+          },
+          "latency": {
+            "rmse": 640.50830078125,
+            "mae": 264.37725830078125,
+            "nrmse": 0.12822989004629629
+          },
+          "reliability": {
+            "rmse": 0.02731066755950451,
+            "mae": 0.0201810821890831,
+            "nrmse": 0.10012918733766049
+          },
+          "response_time": {
+            "rmse": 1.7821159362792969,
+            "mae": 0.8272555470466614,
+            "nrmse": 0.08960309426055789
+          },
+          "throughput": {
+            "rmse": 120.67277526855469,
+            "mae": 44.02702331542969,
+            "nrmse": 0.12068207097006618
+          }
+        }
+      },
+      "0.05": {
+        "density": 0.05,
+        "missing_pct": 95.0,
+        "team_a": {
+          "availability": {
+            "rmse": 0.025521723553538322,
+            "mae": 0.01988091878592968,
+            "nrmse": 0.1158114004659682
+          },
+          "latency": {
+            "rmse": 459.1331481933594,
+            "mae": 223.452392578125,
+            "nrmse": 0.09191854818685874
+          },
+          "reliability": {
+            "rmse": 0.026468591764569283,
+            "mae": 0.020447207614779472,
+            "nrmse": 0.09704188217238505
+          },
+          "response_time": {
+            "rmse": 1.5510473251342773,
+            "mae": 0.7489703893661499,
+            "nrmse": 0.07798518426738978
+          },
+          "throughput": {
+            "rmse": 74.73310089111328,
+            "mae": 35.590938568115234,
+            "nrmse": 0.0747388577538138
+          }
+        },
+        "team_b": {
+          "availability": {
+            "rmse": 0.02525002881884575,
+            "mae": 0.018835704773664474,
+            "nrmse": 0.11457851556076304
+          },
+          "latency": {
+            "rmse": 640.4965209960938,
+            "mae": 264.3349914550781,
+            "nrmse": 0.1282275317309497
+          },
+          "reliability": {
+            "rmse": 0.026979636400938034,
+            "mae": 0.02011643908917904,
+            "nrmse": 0.09891552674813126
+          },
+          "response_time": {
+            "rmse": 1.701882004737854,
+            "mae": 0.7720942497253418,
+            "nrmse": 0.08556900849517682
+          },
+          "throughput": {
+            "rmse": 120.68399047851562,
+            "mae": 44.03528594970703,
+            "nrmse": 0.12069328704396054
+          }
+        }
+      }
+    },
+    "degradation_analysis": {
+      "Team A (BiasedMF)": {
+        "densest_density": 0.5,
+        "sparsest_density": 0.05,
+        "rmse_at_densest": 69.0579638224095,
+        "rmse_at_sparsest": 107.09385734498501,
+        "rmse_increase_pct": 55.07821461459417,
+        "mae_at_densest": 25.62093659378588,
+        "mae_at_sparsest": 51.96652593240142,
+        "mae_increase_pct": 102.82836164937628
+      },
+      "Team B (GraphSAGE)": {
+        "densest_density": 0.5,
+        "sparsest_density": 0.05,
+        "rmse_at_densest": 152.6350562274456,
+        "rmse_at_sparsest": 152.5869246289134,
+        "rmse_increase_pct": -0.031533777181876214,
+        "mae_at_densest": 61.89156965501606,
+        "mae_at_sparsest": 61.83626475967467,
+        "mae_increase_pct": -0.08935771971798949
+      }
+    },
+    "relative_improvement": [
+      {
+        "density": 0.5,
+        "missing_pct": 50.0,
+        "team_a_rmse": 69.0579638224095,
+        "team_b_rmse": 152.6350562274456,
+        "improvement_pct": -121.02455354745788
+      },
+      {
+        "density": 0.3,
+        "missing_pct": 70.0,
+        "team_a_rmse": 72.97299861758947,
+        "team_b_rmse": 152.61639022231103,
+        "improvement_pct": -109.14090569593813
+      },
+      {
+        "density": 0.2,
+        "missing_pct": 80.0,
+        "team_a_rmse": 78.0632797010243,
+        "team_b_rmse": 152.65224247984588,
+        "improvement_pct": -95.54935824435118
+      },
+      {
+        "density": 0.1,
+        "missing_pct": 90.0,
+        "team_a_rmse": 91.48495184704662,
+        "team_b_rmse": 152.60308010056616,
+        "improvement_pct": -66.8067556680827
+      },
+      {
+        "density": 0.05,
+        "missing_pct": 95.0,
+        "team_a_rmse": 107.09385734498501,
+        "team_b_rmse": 152.5869246289134,
+        "improvement_pct": -42.479623399295505
+      }
+    ]
+  },
+  "sensitivity_sweep": [
+    {
+      "alpha": 0.0,
+      "beta": 1.0,
+      "mean_qos_score": 0.4560973586234371,
+      "mean_cost": 0.0434399992227554,
+      "mean_utility": -0.0337777808308601
+    },
+    {
+      "alpha": 0.1,
+      "beta": 0.9,
+      "mean_qos_score": 0.463351989566049,
+      "mean_cost": 0.0439222414255318,
+      "mean_utility": 0.0154967982030767
+    },
+    {
+      "alpha": 0.2,
+      "beta": 0.8,
+      "mean_qos_score": 0.4687120588304019,
+      "mean_cost": 0.0448557227674135,
+      "mean_utility": 0.0655761708815892
+    },
+    {
+      "alpha": 0.3,
+      "beta": 0.7,
+      "mean_qos_score": 0.4785321256404077,
+      "mean_cost": 0.0482970210105444,
+      "mean_utility": 0.1164809420572973
+    },
+    {
+      "alpha": 0.4,
+      "beta": 0.6,
+      "mean_qos_score": 0.5022421824721108,
+      "mean_cost": 0.0613144838242931,
+      "mean_utility": 0.1697971888084327
+    },
+    {
+      "alpha": 0.5,
+      "beta": 0.5,
+      "mean_qos_score": 0.5576090135757199,
+      "mean_cost": 0.1081649550734016,
+      "mean_utility": 0.2292262480585976
+    },
+    {
+      "alpha": 0.6,
+      "beta": 0.4,
+      "mean_qos_score": 0.7309720257742215,
+      "mean_cost": 0.3240121537517306,
+      "mean_utility": 0.3117096334432078
+    },
+    {
+      "alpha": 0.7,
+      "beta": 0.3,
+      "mean_qos_score": 0.8113502988421459,
+      "mean_cost": 0.4631264931508573,
+      "mean_utility": 0.430634135605663
+    },
+    {
+      "alpha": 0.8,
+      "beta": 0.2,
+      "mean_qos_score": 0.8247604809679464,
+      "mean_cost": 0.5015499430068474,
+      "mean_utility": 0.5605053746946441
+    },
+    {
+      "alpha": 0.9,
+      "beta": 0.1,
+      "mean_qos_score": 0.8295672066443789,
+      "mean_cost": 0.5279867555012042,
+      "mean_utility": 0.6942885653459216
+    },
+    {
+      "alpha": 1.0,
+      "beta": 0.0,
+      "mean_qos_score": 0.8309921360297189,
+      "mean_cost": 0.5571836572481116,
+      "mean_utility": 0.8309921360297189
+    }
+  ]
+}

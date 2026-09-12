@@ -1,0 +1,60 @@
+{
+  "confidence_distribution": {
+    "mean": 0.9715496897697449,
+    "std": 0.0960528627038002,
+    "min": 0.23539765179157257,
+    "max": 0.9999997019767761,
+    "median": 0.996399462223053,
+    "p25": 0.9955815672874451,
+    "p75": 0.9969608783721924
+  },
+  "correlation_confidence_vs_error": -0.20740807317133578,
+  "is_calibrated": true,
+  "calibration_tiers": [
+    {
+      "Tier": "Very Low (0.00 - 0.70)",
+      "Min_Confidence": 0.0,
+      "Max_Confidence": 0.7,
+      "Sample_Count": 146,
+      "Mean_Confidence": 0.6380691528320312,
+      "Mean_Absolute_Error": 0.23482680320739746,
+      "Root_Mean_Squared_Error": 0.31246960163116455
+    },
+    {
+      "Tier": "Low (0.70 - 0.85)",
+      "Min_Confidence": 0.7,
+      "Max_Confidence": 0.85,
+      "Sample_Count": 939,
+      "Mean_Confidence": 0.8245174884796143,
+      "Mean_Absolute_Error": 0.3193809688091278,
+      "Root_Mean_Squared_Error": 0.3877356946468353
+    },
+    {
+      "Tier": "Moderate (0.85 - 0.95)",
+      "Min_Confidence": 0.85,
+      "Max_Confidence": 0.95,
+      "Sample_Count": 14600,
+      "Mean_Confidence": 0.9097871780395508,
+      "Mean_Absolute_Error": 0.2281111180782318,
+      "Root_Mean_Squared_Error": 0.2653002440929413
+    },
+    {
+      "Tier": "High (0.95 - 0.98)",
+      "Min_Confidence": 0.95,
+      "Max_Confidence": 0.98,
+      "Sample_Count": 47863,
+      "Mean_Confidence": 0.971611499786377,
+      "Mean_Absolute_Error": 0.18380843102931976,
+      "Root_Mean_Squared_Error": 0.21212893724441528
+    },
+    {
+      "Tier": "Very High (0.98 - 1.00)",
+      "Min_Confidence": 0.98,
+      "Max_Confidence": 1.001,
+      "Sample_Count": 1764397,
+      "Mean_Confidence": 0.9961649775505066,
+      "Mean_Absolute_Error": 0.11594530194997787,
+      "Root_Mean_Squared_Error": 0.13314272463321686
+    }
+  ]
+}

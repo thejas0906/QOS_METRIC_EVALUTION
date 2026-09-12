@@ -1,0 +1,366 @@
+2026-09-12 17:18:53 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 17:18:53 [INFO] [SparsityBenchmark] SPARSITY ROBUSTNESS BENCHMARK
+2026-09-12 17:18:53 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 17:18:53 [INFO] [SparsityBenchmark] Target density levels: [0.5, 0.3, 0.2, 0.1, 0.05]
+2026-09-12 17:18:53 [INFO] [SparsityBenchmark] Equivalent missing ratios: [50.0, 70.0, 80.0, 90.0, 95.0]%
+2026-09-12 17:18:54 [INFO] [SparsityBenchmark] Dataset: 339 users x 5825 services, attributes: ['availability', 'latency', 'reliability', 'response_time', 'throughput']
+2026-09-12 17:18:54 [INFO] [SparsityBenchmark] Generating sparsity masks with fixed test set...
+2026-09-12 17:18:56 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 17:18:56 [INFO] [SparsityBenchmark] DENSITY = 50% | MISSING = 50%
+2026-09-12 17:18:56 [INFO] [SparsityBenchmark]   Observed: 913972, Train: 365589, Val: 182794, Test: 365589
+2026-09-12 17:18:56 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 17:18:56 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 17:19:10 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0227, MAE=0.0176
+2026-09-12 17:19:35 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=347.6528, MAE=143.8987
+2026-09-12 17:19:55 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0237, MAE=0.0181
+2026-09-12 17:20:19 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.1878, MAE=0.4866
+2026-09-12 17:20:43 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=41.8719, MAE=16.2147
+2026-09-12 17:20:43 [INFO] [SparsityBenchmark]   Team A completed in 107.1s
+2026-09-12 17:20:43 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 17:23:54 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0252, MAE=0.0190
+2026-09-12 17:23:54 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=641.3041, MAE=266.1621
+2026-09-12 17:23:54 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0272, MAE=0.0199
+2026-09-12 17:23:54 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.8027, MAE=0.8332
+2026-09-12 17:23:54 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=118.1245, MAE=43.3021
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark]   Team B completed in 191.9s
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark] DENSITY = 30% | MISSING = 70%
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark]   Observed: 548383, Train: 0, Val: 182794, Test: 365589
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=nan, MAE=nan
+2026-09-12 17:23:55 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=nan, MAE=nan
+2026-09-12 17:23:56 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=nan, MAE=nan
+2026-09-12 17:23:56 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=nan, MAE=nan
+2026-09-12 17:23:56 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=nan, MAE=nan
+2026-09-12 17:23:56 [INFO] [SparsityBenchmark]   Team A completed in 1.7s
+2026-09-12 17:23:56 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 17:26:15 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0254, MAE=0.0191
+2026-09-12 17:26:15 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=641.2927, MAE=266.1673
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0281, MAE=0.0211
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7890, MAE=0.8294
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=118.0544, MAE=43.1970
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark]   Team B completed in 139.4s
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark] DENSITY = 20% | MISSING = 80%
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark]   Observed: 548383, Train: 0, Val: 182794, Test: 365589
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 17:26:16 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=nan, MAE=nan
+2026-09-12 17:26:17 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=nan, MAE=nan
+2026-09-12 17:26:17 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=nan, MAE=nan
+2026-09-12 17:26:17 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=nan, MAE=nan
+2026-09-12 17:26:18 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=nan, MAE=nan
+2026-09-12 17:26:18 [INFO] [SparsityBenchmark]   Team A completed in 1.7s
+2026-09-12 17:26:18 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 17:34:50 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 17:34:50 [INFO] [SparsityBenchmark] SPARSITY ROBUSTNESS BENCHMARK
+2026-09-12 17:34:50 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 17:34:50 [INFO] [SparsityBenchmark] Target density levels: [0.5, 0.3, 0.2, 0.1, 0.05]
+2026-09-12 17:34:50 [INFO] [SparsityBenchmark] Equivalent missing ratios: [50.0, 70.0, 80.0, 90.0, 95.0]%
+2026-09-12 17:34:51 [INFO] [SparsityBenchmark] Dataset: 339 users x 5825 services, attributes: ['availability', 'latency', 'reliability', 'response_time', 'throughput']
+2026-09-12 17:34:51 [INFO] [SparsityBenchmark] Generating sparsity masks with fixed test set...
+2026-09-12 17:34:54 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 17:34:54 [INFO] [SparsityBenchmark] DENSITY = 50% | MISSING = 50%
+2026-09-12 17:34:54 [INFO] [SparsityBenchmark]   Observed: 913972, Train: 886554, Val: 9139, Test: 18279
+2026-09-12 17:34:54 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 17:34:54 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 17:35:11 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0225, MAE=0.0175
+2026-09-12 17:36:06 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=307.8763, MAE=115.2622
+2026-09-12 17:36:15 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0236, MAE=0.0181
+2026-09-12 17:36:43 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.0488, MAE=0.3852
+2026-09-12 17:37:15 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=36.3185, MAE=12.4216
+2026-09-12 17:37:15 [INFO] [SparsityBenchmark]   Team A completed in 141.3s
+2026-09-12 17:37:15 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0251, MAE=0.0189
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.5401, MAE=264.3871
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0273, MAE=0.0200
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7949, MAE=0.8280
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.7891, MAE=44.2045
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]   Team B completed in 109.7s
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark] DENSITY = 30% | MISSING = 70%
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]   Observed: 548383, Train: 520965, Val: 9139, Test: 18279
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 17:39:05 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 17:39:10 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0226, MAE=0.0175
+2026-09-12 17:39:26 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=324.4383, MAE=130.0603
+2026-09-12 18:21:20 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0237, MAE=0.0182
+2026-09-12 18:21:51 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.1069, MAE=0.4370
+2026-09-12 21:18:18 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=39.2735, MAE=14.3759
+2026-09-12 21:18:18 [INFO] [SparsityBenchmark]   Team A completed in 13152.5s
+2026-09-12 21:18:18 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0253, MAE=0.0190
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.5308, MAE=264.3958
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0282, MAE=0.0211
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7771, MAE=0.8210
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.7208, MAE=44.0980
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]   Team B completed in 152.4s
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark] DENSITY = 20% | MISSING = 80%
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]   Observed: 365589, Train: 338171, Val: 9139, Test: 18279
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 21:20:50 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 21:21:03 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0227, MAE=0.0176
+2026-09-12 21:21:34 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=346.1452, MAE=145.5813
+2026-09-12 21:21:50 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0237, MAE=0.0182
+2026-09-12 21:22:18 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.1801, MAE=0.4900
+2026-09-12 21:22:48 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=42.9447, MAE=16.5514
+2026-09-12 21:22:48 [INFO] [SparsityBenchmark]   Team A completed in 117.5s
+2026-09-12 21:22:48 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0253, MAE=0.0191
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.6172, MAE=264.5661
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0276, MAE=0.0207
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7797, MAE=0.8568
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.8638, MAE=44.3160
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]   Team B completed in 119.7s
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark] DENSITY = 10% | MISSING = 90%
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]   Observed: 182794, Train: 155376, Val: 9139, Test: 18279
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 21:24:47 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 21:24:56 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0230, MAE=0.0179
+2026-09-12 21:25:06 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=404.5520, MAE=184.9446
+2026-09-12 21:25:19 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0242, MAE=0.0186
+2026-09-12 21:25:29 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.3725, MAE=0.6214
+2026-09-12 21:25:47 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=51.4531, MAE=21.7728
+2026-09-12 21:25:47 [INFO] [SparsityBenchmark]   Team A completed in 59.3s
+2026-09-12 21:25:47 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0249, MAE=0.0188
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.5082, MAE=264.3764
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0273, MAE=0.0202
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7833, MAE=0.8268
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.6732, MAE=44.0282
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]   Team B completed in 59.2s
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark] DENSITY = 5% | MISSING = 95%
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]   Observed: 91397, Train: 63979, Val: 9139, Test: 18279
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 21:26:46 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 21:26:53 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0255, MAE=0.0199
+2026-09-12 21:26:57 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=459.1331, MAE=223.4524
+2026-09-12 21:27:04 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0265, MAE=0.0204
+2026-09-12 21:27:07 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.5510, MAE=0.7490
+2026-09-12 21:27:14 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=74.7331, MAE=35.5909
+2026-09-12 21:27:14 [INFO] [SparsityBenchmark]   Team A completed in 28.0s
+2026-09-12 21:27:14 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 21:27:43 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0253, MAE=0.0189
+2026-09-12 21:27:43 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.4966, MAE=264.3301
+2026-09-12 21:27:43 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0270, MAE=0.0201
+2026-09-12 21:27:43 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.6966, MAE=0.7757
+2026-09-12 21:27:43 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.6825, MAE=44.0316
+2026-09-12 21:27:44 [INFO] [SparsityBenchmark]   Team B completed in 30.0s
+2026-09-12 21:27:44 [INFO] [SparsityBenchmark] 
+[OK] Full results CSV saved to: results/sparsity_benchmark.csv
+2026-09-12 21:27:45 [INFO] [SparsityBenchmark] [OK] RMSE comparison plot saved to: results/figures/sparsity_rmse_comparison.png
+2026-09-12 21:27:45 [INFO] [SparsityBenchmark] [OK] MAE comparison plot saved to: results/figures/sparsity_mae_comparison.png
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] [OK] Per-attribute RMSE plot saved to: results/figures/sparsity_per_attribute_rmse.png
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] DEGRADATION ANALYSIS
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+Team A (BiasedMF):
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   RMSE: 69.0580 (at 50%) -> 107.0939 (at 5%) | +55.1% increase
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   MAE:  25.6209 (at 50%) -> 51.9665 (at 5%) | +102.8% increase
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+Team B (GraphSAGE):
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   RMSE: 152.6353 (at 50%) -> 152.5856 (at 5%) | +-0.0% increase
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   MAE:  61.8917 (at 50%) -> 61.8353 (at 5%) | +-0.1% increase
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+Relative Improvement (Team B RMSE vs Team A RMSE):
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   Missing 50%: Team A RMSE=69.0580, Team B RMSE=152.6353 -> -121.0% improvement
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   Missing 70%: Team A RMSE=72.9730, Team B RMSE=152.6164 -> -109.1% improvement
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   Missing 80%: Team A RMSE=78.0633, Team B RMSE=152.6627 -> -95.6% improvement
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   Missing 90%: Team A RMSE=91.4850, Team B RMSE=152.6034 -> -66.8% improvement
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]   Missing 95%: Team A RMSE=107.0939, Team B RMSE=152.5856 -> -42.5% improvement
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] TABLE 1: Average RMSE by Sparsity Level
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] Missing %    Team A RMSE      Team B RMSE      Winner      
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] --------------------------------------------------------
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     50%      69.0580          152.6353         Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     70%      72.9730          152.6164         Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     80%      78.0633          152.6627         Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     90%      91.4850          152.6034         Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     95%      107.0939         152.5856         Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] TABLE 2: Average MAE by Sparsity Level
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] Missing %    Team A MAE       Team B MAE       Winner      
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] --------------------------------------------------------
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     50%      25.6209          61.8917          Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     70%      28.9818          61.8710          Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     80%      32.5317          61.9557          Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     90%      41.4750          61.8541          Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark]     95%      51.9665          61.8353          Team A
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+[OK] Full benchmark JSON saved to: results/metrics/sparsity_benchmark.json
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] SPARSITY ROBUSTNESS BENCHMARK COMPLETE
+2026-09-12 21:27:47 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 21:54:39 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 21:54:39 [INFO] [SparsityBenchmark] SPARSITY ROBUSTNESS BENCHMARK
+2026-09-12 21:54:39 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 21:54:39 [INFO] [SparsityBenchmark] Target density levels: [0.5, 0.3, 0.2, 0.1, 0.05]
+2026-09-12 21:54:39 [INFO] [SparsityBenchmark] Equivalent missing ratios: [50.0, 70.0, 80.0, 90.0, 95.0]%
+2026-09-12 21:54:40 [INFO] [SparsityBenchmark] Dataset: 339 users x 5825 services, attributes: ['availability', 'latency', 'reliability', 'response_time', 'throughput']
+2026-09-12 21:54:40 [INFO] [SparsityBenchmark] Generating sparsity masks with fixed test set...
+2026-09-12 21:54:43 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 21:54:43 [INFO] [SparsityBenchmark] DENSITY = 50% | MISSING = 50%
+2026-09-12 21:54:43 [INFO] [SparsityBenchmark]   Observed: 913972, Train: 886554, Val: 9139, Test: 18279
+2026-09-12 21:54:43 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 21:54:43 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 21:54:59 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0225, MAE=0.0175
+2026-09-12 21:55:58 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=307.8763, MAE=115.2622
+2026-09-12 21:56:15 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0236, MAE=0.0181
+2026-09-12 21:57:10 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.0488, MAE=0.3852
+2026-09-12 21:58:13 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=36.3185, MAE=12.4216
+2026-09-12 21:58:13 [INFO] [SparsityBenchmark]   Team A completed in 210.0s
+2026-09-12 21:58:13 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0252, MAE=0.0189
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.5396, MAE=264.3879
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0273, MAE=0.0201
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7949, MAE=0.8272
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.7882, MAE=44.2038
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]   Team B completed in 191.5s
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark] DENSITY = 30% | MISSING = 70%
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]   Observed: 548383, Train: 520965, Val: 9139, Test: 18279
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 22:01:24 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 22:01:35 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0226, MAE=0.0175
+2026-09-12 22:02:02 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=324.4383, MAE=130.0603
+2026-09-12 22:02:21 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0237, MAE=0.0182
+2026-09-12 22:02:50 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.1069, MAE=0.4370
+2026-09-12 22:03:26 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=39.2735, MAE=14.3759
+2026-09-12 22:03:26 [INFO] [SparsityBenchmark]   Team A completed in 121.4s
+2026-09-12 22:03:26 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0253, MAE=0.0189
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.5314, MAE=264.3959
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0281, MAE=0.0211
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7762, MAE=0.8213
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.7209, MAE=44.0974
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]   Team B completed in 114.3s
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark] DENSITY = 20% | MISSING = 80%
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]   Observed: 365589, Train: 338171, Val: 9139, Test: 18279
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 22:05:20 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 22:05:29 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0227, MAE=0.0176
+2026-09-12 22:05:49 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=346.1452, MAE=145.5813
+2026-09-12 22:06:03 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0237, MAE=0.0182
+2026-09-12 22:06:23 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.1801, MAE=0.4900
+2026-09-12 22:06:47 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=42.9447, MAE=16.5514
+2026-09-12 22:06:47 [INFO] [SparsityBenchmark]   Team A completed in 87.0s
+2026-09-12 22:06:47 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0251, MAE=0.0189
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.5867, MAE=264.5070
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0275, MAE=0.0206
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7798, MAE=0.8236
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.8421, MAE=44.2857
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]   Team B completed in 79.0s
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark] DENSITY = 10% | MISSING = 90%
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]   Observed: 182794, Train: 155376, Val: 9139, Test: 18279
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 22:08:06 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 22:08:15 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0230, MAE=0.0179
+2026-09-12 22:08:21 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=404.5520, MAE=184.9446
+2026-09-12 22:08:29 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0242, MAE=0.0186
+2026-09-12 22:08:34 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.3725, MAE=0.6214
+2026-09-12 22:08:45 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=51.4531, MAE=21.7728
+2026-09-12 22:08:45 [INFO] [SparsityBenchmark]   Team A completed in 38.7s
+2026-09-12 22:08:45 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0249, MAE=0.0188
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.5083, MAE=264.3773
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0273, MAE=0.0202
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7821, MAE=0.8273
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.6728, MAE=44.0270
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]   Team B completed in 41.0s
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark] 
+==================================================
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark] DENSITY = 5% | MISSING = 95%
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]   Observed: 91397, Train: 63979, Val: 9139, Test: 18279
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark] ==================================================
+2026-09-12 22:09:26 [INFO] [SparsityBenchmark]   Training Team A (BiasedMF)...
+2026-09-12 22:09:30 [INFO] [SparsityBenchmark]     [Team A] availability: RMSE=0.0255, MAE=0.0199
+2026-09-12 22:09:32 [INFO] [SparsityBenchmark]     [Team A] latency: RMSE=459.1331, MAE=223.4524
+2026-09-12 22:09:36 [INFO] [SparsityBenchmark]     [Team A] reliability: RMSE=0.0265, MAE=0.0204
+2026-09-12 22:09:38 [INFO] [SparsityBenchmark]     [Team A] response_time: RMSE=1.5510, MAE=0.7490
+2026-09-12 22:09:43 [INFO] [SparsityBenchmark]     [Team A] throughput: RMSE=74.7331, MAE=35.5909
+2026-09-12 22:09:43 [INFO] [SparsityBenchmark]   Team A completed in 17.1s
+2026-09-12 22:09:43 [INFO] [SparsityBenchmark]   Training Team B (GraphSAGE)...
+2026-09-12 22:10:06 [INFO] [SparsityBenchmark]     [Team B] availability: RMSE=0.0253, MAE=0.0188
+2026-09-12 22:10:06 [INFO] [SparsityBenchmark]     [Team B] latency: RMSE=640.4965, MAE=264.3350
+2026-09-12 22:10:06 [INFO] [SparsityBenchmark]     [Team B] reliability: RMSE=0.0270, MAE=0.0201
+2026-09-12 22:10:06 [INFO] [SparsityBenchmark]     [Team B] response_time: RMSE=1.7019, MAE=0.7721
+2026-09-12 22:10:06 [INFO] [SparsityBenchmark]     [Team B] throughput: RMSE=120.6840, MAE=44.0353
+2026-09-12 22:10:06 [INFO] [SparsityBenchmark]   Team B completed in 23.3s
+2026-09-12 22:10:06 [INFO] [SparsityBenchmark] 
+[OK] Full results CSV saved to: results/sparsity_benchmark.csv
+2026-09-12 22:10:07 [INFO] [SparsityBenchmark] [OK] RMSE comparison plot saved to: results/figures/sparsity_rmse_comparison.png
+2026-09-12 22:10:07 [INFO] [SparsityBenchmark] [OK] MAE comparison plot saved to: results/figures/sparsity_mae_comparison.png
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] [OK] Per-attribute RMSE plot saved to: results/figures/sparsity_per_attribute_rmse.png
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] DEGRADATION ANALYSIS
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+Team A (BiasedMF):
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   RMSE: 69.0580 (at 50%) -> 107.0939 (at 5%) | +55.1% increase
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   MAE:  25.6209 (at 50%) -> 51.9665 (at 5%) | +102.8% increase
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+Team B (GraphSAGE):
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   RMSE: 152.6351 (at 50%) -> 152.5869 (at 5%) | +-0.0% increase
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   MAE:  61.8916 (at 50%) -> 61.8363 (at 5%) | +-0.1% increase
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+Relative Improvement (Team B RMSE vs Team A RMSE):
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   Missing 50%: Team A RMSE=69.0580, Team B RMSE=152.6351 -> -121.0% improvement
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   Missing 70%: Team A RMSE=72.9730, Team B RMSE=152.6164 -> -109.1% improvement
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   Missing 80%: Team A RMSE=78.0633, Team B RMSE=152.6522 -> -95.5% improvement
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   Missing 90%: Team A RMSE=91.4850, Team B RMSE=152.6031 -> -66.8% improvement
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]   Missing 95%: Team A RMSE=107.0939, Team B RMSE=152.5869 -> -42.5% improvement
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] TABLE 1: Average RMSE by Sparsity Level
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] Missing %    Team A RMSE      Team B RMSE      Winner      
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] --------------------------------------------------------
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     50%      69.0580          152.6351         Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     70%      72.9730          152.6164         Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     80%      78.0633          152.6522         Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     90%      91.4850          152.6031         Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     95%      107.0939         152.5869         Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] TABLE 2: Average MAE by Sparsity Level
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] ============================================================
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] Missing %    Team A MAE       Team B MAE       Winner      
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] --------------------------------------------------------
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     50%      25.6209          61.8916          Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     70%      28.9818          61.8709          Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     80%      32.5317          61.9312          Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     90%      41.4750          61.8541          Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark]     95%      51.9665          61.8363          Team A
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+[OK] Full benchmark JSON saved to: results/metrics/sparsity_benchmark.json
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] 
+============================================================
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] SPARSITY ROBUSTNESS BENCHMARK COMPLETE
+2026-09-12 22:10:09 [INFO] [SparsityBenchmark] ============================================================

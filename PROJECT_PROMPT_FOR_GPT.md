@@ -398,6 +398,18 @@ python experiments/run_comparison.py
 # 6. Generate Cost-Performance Pareto Frontier Sweep
 python experiments/run_sensitivity_analysis.py
 
+# 7. Evaluate QoS Prediction Accuracy Benchmark (MAE & RMSE per attribute)
+python src/common/evaluate_qos_prediction.py
+
+# 8. Execute Sparsity Robustness Benchmark (50% to 95% missing ratio)
+python experiments/run_sparsity_benchmark.py
+
+# 9. Execute Cost-Performance-Confidence 3-Paradigm Benchmark
+python experiments/run_confidence_comparison.py
+
+# 10. Consolidate All Benchmarks into Master Database & Report
+python src/common/store_master_benchmark.py
+
 # Optional: Fast debug / CI execution using calibrated synthetic generator
 python experiments/run_team_a.py --synthetic --epochs 10
 python experiments/run_team_b.py --synthetic --epochs 10 --alpha 0.7 --beta 0.3
