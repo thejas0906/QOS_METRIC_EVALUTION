@@ -125,18 +125,43 @@ class TeamBEvaluator:
         # Baseline QoS-only recommendations (equivalent to beta=0.0, gamma=0.0)
         utility_baseline = composite_qos_pred
 
-        recs_cost_aware = self.ranking_engine.rank_all_users(utility_pred, k=max(self.k_values))
-        recs_baseline = self.ranking_engine.rank_all_users(utility_baseline, k=max(self.k_values))
+        # Build candidate test items per user from held-out test edges (Protocol matching Team A)
+        test_u = test_edge_dict["u"]
+        test_s = test_edge_dict["s"]
+        user_test_items: Dict[int, List[int]] = {u: [] for u in range(num_u)}
+        for u_idx, s_idx in zip(test_u, test_s):
+            user_test_items[int(u_idx)].append(int(s_idx))
 
-        # Build ground truth relevance sets (top 20% utility services per user)
-        ground_truth_relevant = {}
-        gains_dict = {}
+        recs_cost_aware: Dict[int, List[int]] = {}
+        recs_baseline: Dict[int, List[int]] = {}
+        ground_truth_relevant: Dict[int, Set[int]] = {}
+        gains_dict: Dict[int, Dict[int, float]] = {}
+
+        max_k = max(self.k_values)
+
         for u in range(num_u):
-            thresh = np.percentile(utility_true[u], 80.0)
-            ground_truth_relevant[u] = set(np.where(utility_true[u] >= thresh)[0])
+            candidates = np.array(user_test_items[u], dtype=int)
+            if len(candidates) < max_k:
+                continue
+
+            # Ranked predictions among test candidates for user u (Cost-Aware)
+            user_scores = utility_pred[u, candidates]
+            sorted_order = np.argsort(user_scores)[::-1]
+            recs_cost_aware[u] = [int(candidates[idx]) for idx in sorted_order[:max_k]]
+
+            # Ranked predictions for baseline (QoS-Only)
+            base_scores = utility_baseline[u, candidates]
+            sorted_base_order = np.argsort(base_scores)[::-1]
+            recs_baseline[u] = [int(candidates[idx]) for idx in sorted_base_order[:max_k]]
+
+            # Ground truth relevance: Top 20% within user's held-out test candidates
+            user_true_scores = utility_true[u, candidates]
+            thresh = np.percentile(user_true_scores, 80.0)
+            ground_truth_relevant[u] = set(candidates[user_true_scores >= thresh])
+
             gains_dict[u] = {
-                int(s): float(max(0.0, utility_true[u, s]))
-                for s in range(num_s)
+                int(s): float(max(0.0, score))
+                for s, score in zip(candidates, user_true_scores)
             }
 
         rec_metrics = RecommendationMetricsEvaluator.evaluate_recommendations(

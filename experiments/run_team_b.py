@@ -38,6 +38,7 @@ def main():
     parser.add_argument("--beta", type=float, default=None, help="Utility beta (Cost penalty).")
     parser.add_argument("--gamma", type=float, default=None, help="Utility gamma (Confidence weight).")
     parser.add_argument("--synthetic", action="store_true", help="Force synthetic dataset generation.")
+    parser.add_argument("--eval-only", action="store_true", help="Skip training and run evaluation using existing checkpoint.")
     args = parser.parse_args()
 
     overrides = {}
@@ -177,53 +178,56 @@ def main():
     e_qos_val = torch.from_numpy(val_edges["qos"]).float()
 
     # 5. Training Loop
-    logger.info(f"Starting GraphSAGE training for {config.epochs} epochs...")
-    best_val_loss = float("inf")
-    patience_counter = 0
+    if not args.eval_only:
+        logger.info(f"Starting GraphSAGE training for {config.epochs} epochs...")
+        best_val_loss = float("inf")
+        patience_counter = 0
 
-    for epoch in range(1, config.epochs + 1):
-        model.train()
-        decoder.train()
-        optimizer.zero_grad()
+        for epoch in range(1, config.epochs + 1):
+            model.train()
+            decoder.train()
+            optimizer.zero_grad()
 
-        # Forward pass message passing
-        h_u, h_s = model(u_x_t, s_x_t, e_u_train, e_s_train)
+            # Forward pass message passing
+            h_u, h_s = model(u_x_t, s_x_t, e_u_train, e_s_train)
 
-        # Predict QoS on training edges
-        preds_train = decoder(h_u[e_u_train], h_s[e_s_train])
-        train_loss = balanced_loss(preds_train, e_qos_train)
+            # Predict QoS on training edges
+            preds_train = decoder(h_u[e_u_train], h_s[e_s_train])
+            train_loss = balanced_loss(preds_train, e_qos_train)
 
-        train_loss.backward()
-        # Gradient clipping for stable convergence
-        torch.nn.utils.clip_grad_norm_(list(model.parameters()) + list(decoder.parameters()), max_norm=5.0)
-        optimizer.step()
+            train_loss.backward()
+            # Gradient clipping for stable convergence
+            torch.nn.utils.clip_grad_norm_(list(model.parameters()) + list(decoder.parameters()), max_norm=5.0)
+            optimizer.step()
 
-        # Validation
-        model.eval()
-        decoder.eval()
-        with torch.no_grad():
-            h_u_val, h_s_val = model(u_x_t, s_x_t, e_u_train, e_s_train)
-            preds_val = decoder(h_u_val[e_u_val], h_s_val[e_s_val])
-            val_loss = balanced_loss(preds_val, e_qos_val).item()
+            # Validation
+            model.eval()
+            decoder.eval()
+            with torch.no_grad():
+                h_u_val, h_s_val = model(u_x_t, s_x_t, e_u_train, e_s_train)
+                preds_val = decoder(h_u_val[e_u_val], h_s_val[e_s_val])
+                val_loss = balanced_loss(preds_val, e_qos_val).item()
 
-        if val_loss < best_val_loss:
-            best_val_loss = val_loss
-            patience_counter = 0
-            # Save checkpoint
-            os.makedirs("results/checkpoints/team_b", exist_ok=True)
-            torch.save({
-                "model_state": model.state_dict(),
-                "decoder_state": decoder.state_dict(),
-                "epoch": epoch
-            }, "results/checkpoints/team_b/best_model.pt")
-        else:
-            patience_counter += 1
-            if patience_counter >= config.early_stopping_patience:
-                logger.info(f"Early stopping triggered at epoch {epoch}")
-                break
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                patience_counter = 0
+                # Save checkpoint
+                os.makedirs("results/checkpoints/team_b", exist_ok=True)
+                torch.save({
+                    "model_state": model.state_dict(),
+                    "decoder_state": decoder.state_dict(),
+                    "epoch": epoch
+                }, "results/checkpoints/team_b/best_model.pt")
+            else:
+                patience_counter += 1
+                if patience_counter >= config.early_stopping_patience:
+                    logger.info(f"Early stopping triggered at epoch {epoch}")
+                    break
 
-        if epoch % 10 == 0 or epoch == 1:
-            logger.info(f"Epoch {epoch:03d} | Train Loss: {train_loss.item():.4f} | Val Loss: {val_loss:.4f}")
+            if epoch % 10 == 0 or epoch == 1:
+                logger.info(f"Epoch {epoch:03d} | Train Loss: {train_loss.item():.4f} | Val Loss: {val_loss:.4f}")
+    else:
+        logger.info("Evaluation only mode: skipping training and loading best model checkpoint.")
 
     # Load best checkpoint
     ckpt = torch.load("results/checkpoints/team_b/best_model.pt", weights_only=True)
