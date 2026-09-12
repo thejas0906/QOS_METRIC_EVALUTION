@@ -1,0 +1,34 @@
+% Auto-generated comparative benchmark tables
+\begin{table}[htbp]
+\centering
+\caption{Prediction Accuracy Comparison (RMSE & MAE)}
+\label{tab:qos_prediction_comparison}
+\begin{tabular}{lcccc}
+\hline
+\textbf{QoS Attribute} & \multicolumn{2}{c}{\textbf{Team A (BiasedMF)}} & \multicolumn{2}{c}{\textbf{Team B (GraphSAGE)}} \\
+ & \textbf{RMSE} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAE} \\
+\hline
+Availability & 0.2052 & 0.1620 & \textbf{0.1209} & \textbf{0.1032} \\
+Latency & \textbf{127.8594} & \textbf{95.4314} & 377.2965 & 341.9292 \\
+Reliability & 0.2061 & \textbf{0.1627} & \textbf{0.1835} & 0.1712 \\
+Response Time & \textbf{0.4611} & \textbf{0.3461} & 0.7152 & 0.5353 \\
+Throughput & \textbf{873.9087} & \textbf{645.8262} & 2057.3523 & 1827.9711 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Recommendation Quality Comparison (Top-$K$ Ranking)}
+\label{tab:recommendation_comparison}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Cutoff $K$} & \multicolumn{3}{c}{\textbf{Team A (QoS-Only Ranking)}} & \multicolumn{3}{c}{\textbf{Team B (Cost-Performance Ranking)}} \\
+ & \textbf{Prec@$K$} & \textbf{Rec@$K$} & \textbf{NDCG@$K$} & \textbf{Prec@$K$} & \textbf{Rec@$K$} & \textbf{NDCG@$K$} \\
+\hline
+Top-5 & 0.3032 & 0.6703 & 0.9023 & 0.0124 & 0.0006 & 0.6799 \\
+Top-10 & 0.2251 & 0.9538 & 0.9490 & 0.0254 & 0.0025 & 0.6988 \\
+Top-20 & 0.1202 & 1.0000 & 0.9617 & 0.0488 & 0.0098 & 0.7218 \\
+\hline
+\end{tabular}
+\end{table}

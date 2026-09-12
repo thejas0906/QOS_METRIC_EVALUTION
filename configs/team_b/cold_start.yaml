@@ -1,0 +1,6 @@
+# Team B: Cold-Start Evaluation Configuration
+cold_user_ratio: 0.10
+cold_service_ratio: 0.10
+evaluate_cold_users: true
+evaluate_cold_services: true
+top_k_list: [5, 10, 20]

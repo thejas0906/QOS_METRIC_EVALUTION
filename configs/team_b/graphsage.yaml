@@ -1,0 +1,24 @@
+# Team B: GraphSAGE Configuration
+model_name: "HeteroGraphSAGE"
+hidden_channels: 64
+out_channels: 32
+num_layers: 2
+aggregator: "mean"
+dropout: 0.1
+lr: 0.002
+weight_decay: 0.0001
+epochs: 100
+batch_size: 2048
+early_stopping_patience: 10
+
+alpha: 0.7
+beta: 0.3
+
+top_k_list: [5, 10, 20]
+
+attribute_weights:
+  response_time: 0.25
+  availability: 0.20
+  reliability: 0.20
+  throughput: 0.20
+  latency: 0.15

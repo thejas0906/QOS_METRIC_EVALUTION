@@ -1,0 +1,15 @@
+# Team A: Collaborative Filtering Configuration
+model_name: "UserBasedCF"
+density: 0.10
+val_ratio: 0.10
+test_ratio: 0.20
+k_neighbors: 10
+similarity_metric: "pcc"
+top_k_list: [5, 10, 20]
+
+attribute_weights:
+  response_time: 0.25
+  availability: 0.20
+  reliability: 0.20
+  throughput: 0.20
+  latency: 0.15

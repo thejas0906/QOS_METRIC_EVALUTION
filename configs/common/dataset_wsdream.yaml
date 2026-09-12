@@ -1,0 +1,16 @@
+# WS-DREAM Dataset Configuration
+project_name: "QOS_GNN_Recommendation"
+seed: 42
+data_dir: "data/raw/ws_dream"
+processed_dir: "data/processed"
+results_dir: "results"
+
+num_users: 339
+num_services: 5825
+
+attributes:
+  - "response_time"
+  - "availability"
+  - "reliability"
+  - "throughput"
+  - "latency"

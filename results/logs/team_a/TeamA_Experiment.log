@@ -1,0 +1,40 @@
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Initialized Team A Experiment with Model: BiasedMF, Density: 0.1
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Loaded QoS dataset with attributes: ['availability', 'latency', 'reliability', 'response_time', 'throughput']
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Sparsity Mask: 16950 observed (10.0%), Train: 11865, Val: 1695, Test: 3390
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [availability]...
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [latency]...
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [reliability]...
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [response_time]...
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [throughput]...
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] === Team A Prediction Metrics ===
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] [availability] RMSE: 0.2052 | MAE: 0.1620
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] [latency] RMSE: 159.7015 | MAE: 123.3164
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] [reliability] RMSE: 0.2061 | MAE: 0.1627
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] [response_time] RMSE: 0.4611 | MAE: 0.3461
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] [throughput] RMSE: 942.3194 | MAE: 707.4770
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] === Team A Top-K Recommendation Metrics ===
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Top-5 -> Precision: 0.2920 | Recall: 0.6455 | NDCG: 0.8937
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Top-10 -> Precision: 0.2236 | Recall: 0.9489 | NDCG: 0.9452
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Top-20 -> Precision: 0.1202 | Recall: 1.0000 | NDCG: 0.9586
+2026-09-12 12:26:34 [INFO] [TeamA_Experiment] Metrics saved to results/metrics/team_a_results.json
+2026-09-12 12:26:38 [INFO] [TeamA_Experiment] Generated visualization figures in results/figures/
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Initialized Team A Experiment with Model: BiasedMF, Density: 0.1
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Loaded QoS dataset with attributes: ['availability', 'latency', 'reliability', 'response_time', 'throughput']
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Sparsity Mask: 16950 observed (10.0%), Train: 11865, Val: 1695, Test: 3390
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [availability]...
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [latency]...
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [reliability]...
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [response_time]...
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [throughput]...
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] === Team A Prediction Metrics ===
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] [availability] RMSE: 0.2052 | MAE: 0.1620
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] [latency] RMSE: 127.8594 | MAE: 95.4314
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] [reliability] RMSE: 0.2061 | MAE: 0.1627
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] [response_time] RMSE: 0.4611 | MAE: 0.3461
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] [throughput] RMSE: 873.9087 | MAE: 645.8262
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] === Team A Top-K Recommendation Metrics ===
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Top-5 -> Precision: 0.3032 | Recall: 0.6703 | NDCG: 0.9023
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Top-10 -> Precision: 0.2251 | Recall: 0.9538 | NDCG: 0.9490
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Top-20 -> Precision: 0.1202 | Recall: 1.0000 | NDCG: 0.9617
+2026-09-12 12:27:14 [INFO] [TeamA_Experiment] Metrics saved to results/metrics/team_a_results.json
+2026-09-12 12:27:16 [INFO] [TeamA_Experiment] Generated visualization figures in results/figures/
