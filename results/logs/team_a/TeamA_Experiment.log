@@ -58,3 +58,43 @@
 2026-09-12 13:29:42 [INFO] [TeamA_Experiment] Top-20 -> Precision: 0.2077 | Recall: 0.3689 | NDCG: 0.9065
 2026-09-12 13:29:42 [INFO] [TeamA_Experiment] Metrics saved to results/metrics/team_a_results.json
 2026-09-12 13:29:43 [INFO] [TeamA_Experiment] Generated visualization figures in results/figures/
+2026-09-13 13:05:51 [INFO] [TeamA_Experiment] Initialized Team A Experiment with Model: BiasedMF, Density: 0.05
+2026-09-13 13:05:52 [INFO] [TeamA_Experiment] Loaded QoS dataset with attributes: ['availability', 'latency', 'reliability', 'response_time', 'throughput']
+2026-09-13 13:05:53 [INFO] [TeamA_Experiment] Sparsity Mask: 93691 observed (5.0%), Train: 65584, Val: 9369, Test: 18738
+2026-09-13 13:05:53 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [availability]...
+2026-09-13 13:05:57 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [latency]...
+2026-09-13 13:05:59 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [reliability]...
+2026-09-13 13:06:02 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [response_time]...
+2026-09-13 13:06:03 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [throughput]...
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] === Team A Prediction Metrics ===
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] [availability] RMSE: 0.2220 | MAE: 0.0926
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] [latency] RMSE: 461.4610 | MAE: 223.2923
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] [reliability] RMSE: 0.2188 | MAE: 0.0913
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] [response_time] RMSE: 1.5497 | MAE: 0.7496
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] [throughput] RMSE: 90.1978 | MAE: 42.2534
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] === Team A Top-K Recommendation Metrics ===
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] Top-5 -> Precision: 0.2614 | Recall: 0.1158 | NDCG: 0.8763
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] Top-10 -> Precision: 0.2339 | Recall: 0.2079 | NDCG: 0.8944
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] Top-20 -> Precision: 0.2217 | Recall: 0.3936 | NDCG: 0.9156
+2026-09-13 13:06:05 [INFO] [TeamA_Experiment] Metrics saved to results/metrics/team_a_results.json
+2026-09-13 13:06:06 [INFO] [TeamA_Experiment] Generated visualization figures in results/figures/
+2026-09-13 13:06:40 [INFO] [TeamA_Experiment] Initialized Team A Experiment with Model: BiasedMF, Density: 0.1
+2026-09-13 13:06:40 [INFO] [TeamA_Experiment] Loaded QoS dataset with attributes: ['availability', 'latency', 'reliability', 'response_time', 'throughput']
+2026-09-13 13:06:41 [INFO] [TeamA_Experiment] Sparsity Mask: 187383 observed (10.0%), Train: 131169, Val: 18738, Test: 37476
+2026-09-13 13:06:41 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [availability]...
+2026-09-13 13:06:47 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [latency]...
+2026-09-13 13:06:54 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [reliability]...
+2026-09-13 13:07:00 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [response_time]...
+2026-09-13 13:07:07 [INFO] [TeamA_Experiment] Fitting BiasedMF on attribute [throughput]...
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] === Team A Prediction Metrics ===
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] [availability] RMSE: 0.2192 | MAE: 0.0799
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] [latency] RMSE: 421.3106 | MAE: 197.5209
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] [reliability] RMSE: 0.2158 | MAE: 0.0828
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] [response_time] RMSE: 1.4256 | MAE: 0.6645
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] [throughput] RMSE: 75.8929 | MAE: 32.1254
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] === Team A Top-K Recommendation Metrics ===
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] Top-5 -> Precision: 0.3304 | Recall: 0.0742 | NDCG: 0.8599
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] Top-10 -> Precision: 0.2959 | Recall: 0.1327 | NDCG: 0.8817
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] Top-20 -> Precision: 0.2594 | Recall: 0.2331 | NDCG: 0.9022
+2026-09-13 13:07:15 [INFO] [TeamA_Experiment] Metrics saved to results/metrics/team_a_results.json
+2026-09-13 13:07:16 [INFO] [TeamA_Experiment] Generated visualization figures in results/figures/
