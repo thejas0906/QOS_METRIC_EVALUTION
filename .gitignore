@@ -35,3 +35,7 @@ Thumbs.db
 # Artifact directories that are generated during experiments
 results/logs/*.log
 results/checkpoints/*
+
+
+PROJECT_PROMPT_FOR_GPT.md
+
