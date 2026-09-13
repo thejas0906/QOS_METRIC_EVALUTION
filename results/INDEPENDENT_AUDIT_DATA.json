@@ -1,0 +1,708 @@
+{
+  "leakage_findings": [
+    {
+      "component": "Team A Data Splitting",
+      "status": "CLEAN",
+      "details": "Train, val, test masks are strictly disjoint."
+    },
+    {
+      "component": "QoS Normalizer in Team A & B",
+      "status": "WARNING",
+      "details": "QoSNormalizer is fitted on observed_mask (train + val + test) or the entire matrix instead of train_mask only, leaking min/max scalar bounds."
+    },
+    {
+      "component": "Team B Main Edge Splitting",
+      "status": "CLEAN",
+      "details": "Train, val, and test interaction edges are strictly disjoint."
+    },
+    {
+      "component": "Team B Cold-Start Partitioning",
+      "status": "CLEAN",
+      "details": "Cold users and services are strictly excluded from the training bipartite graph."
+    },
+    {
+      "component": "Team B in Sparsity Benchmark (run_sparsity_benchmark.py)",
+      "status": "CRITICAL_LEAKAGE",
+      "details": "In run_sparsity_benchmark.py, the bipartite graph is built from observation_mask (which contains train_mask | val_mask | test_mask). split_interaction_edges then randomly samples 70% of all edges for training. Consequently, ~70% of the held-out test_mask positions leak directly into Team B's training set!"
+    }
+  ],
+  "recalc_table": [
+    {
+      "Attribute": "availability",
+      "Metric": "RMSE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.3267342150211334,
+      "Recomputed": 0.22197622060775757,
+      "Diff": -0.10475799441337585,
+      "Match": false
+    },
+    {
+      "Attribute": "availability",
+      "Metric": "MAE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.18822699785232544,
+      "Recomputed": 0.09261700510978699,
+      "Diff": -0.09560999274253845,
+      "Match": false
+    },
+    {
+      "Attribute": "availability",
+      "Metric": "RMSE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.09236487001180649,
+      "Recomputed": 0.31711283326148987,
+      "Diff": 0.22474796324968338,
+      "Match": false
+    },
+    {
+      "Attribute": "availability",
+      "Metric": "MAE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.07324390113353729,
+      "Recomputed": 0.11881691217422485,
+      "Diff": 0.04557301104068756,
+      "Match": false
+    },
+    {
+      "Attribute": "latency",
+      "Metric": "RMSE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 529.455322265625,
+      "Recomputed": 461.4609680175781,
+      "Diff": -67.99435424804688,
+      "Match": false
+    },
+    {
+      "Attribute": "latency",
+      "Metric": "MAE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 257.6280212402344,
+      "Recomputed": 223.29234313964844,
+      "Diff": -34.33567810058594,
+      "Match": false
+    },
+    {
+      "Attribute": "latency",
+      "Metric": "RMSE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 632.0682983398438,
+      "Recomputed": 624.4779663085938,
+      "Diff": -7.59033203125,
+      "Match": false
+    },
+    {
+      "Attribute": "latency",
+      "Metric": "MAE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 263.8559875488281,
+      "Recomputed": 258.1587829589844,
+      "Diff": -5.69720458984375,
+      "Match": false
+    },
+    {
+      "Attribute": "reliability",
+      "Metric": "RMSE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.32321253418922424,
+      "Recomputed": 0.21877093613147736,
+      "Diff": -0.10444159805774689,
+      "Match": false
+    },
+    {
+      "Attribute": "reliability",
+      "Metric": "MAE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.1875327229499817,
+      "Recomputed": 0.0913441851735115,
+      "Diff": -0.09618853777647018,
+      "Match": false
+    },
+    {
+      "Attribute": "reliability",
+      "Metric": "RMSE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.10894415527582169,
+      "Recomputed": 0.3268789052963257,
+      "Diff": 0.217934750020504,
+      "Match": false
+    },
+    {
+      "Attribute": "reliability",
+      "Metric": "MAE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.08864062279462814,
+      "Recomputed": 0.13507068157196045,
+      "Diff": 0.046430058777332306,
+      "Match": false
+    },
+    {
+      "Attribute": "response_time",
+      "Metric": "RMSE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 1.7901195287704468,
+      "Recomputed": 1.5496885776519775,
+      "Diff": -0.24043095111846924,
+      "Match": false
+    },
+    {
+      "Attribute": "response_time",
+      "Metric": "MAE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.8733486533164978,
+      "Recomputed": 0.749634325504303,
+      "Diff": -0.12371432781219482,
+      "Match": false
+    },
+    {
+      "Attribute": "response_time",
+      "Metric": "RMSE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 1.9300941228866577,
+      "Recomputed": 1.924198865890503,
+      "Diff": -0.005895256996154785,
+      "Match": false
+    },
+    {
+      "Attribute": "response_time",
+      "Metric": "MAE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.9637144804000854,
+      "Recomputed": 0.9651148915290833,
+      "Diff": 0.0014004111289978027,
+      "Match": false
+    },
+    {
+      "Attribute": "throughput",
+      "Metric": "RMSE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 105.3586196899414,
+      "Recomputed": 90.19778442382812,
+      "Diff": -15.160835266113281,
+      "Match": false
+    },
+    {
+      "Attribute": "throughput",
+      "Metric": "MAE",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 50.4361572265625,
+      "Recomputed": 42.253353118896484,
+      "Diff": -8.182804107666016,
+      "Match": false
+    },
+    {
+      "Attribute": "throughput",
+      "Metric": "RMSE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 120.22053527832031,
+      "Recomputed": 118.76286315917969,
+      "Diff": -1.457672119140625,
+      "Match": false
+    },
+    {
+      "Attribute": "throughput",
+      "Metric": "MAE",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 46.751319885253906,
+      "Recomputed": 45.57133102416992,
+      "Diff": -1.1799888610839844,
+      "Match": false
+    },
+    {
+      "Attribute": "Precision@5",
+      "Metric": "precision",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.27964601769911507,
+      "Recomputed": 0.26135693215339234,
+      "Diff": -0.018289085545722727,
+      "Match": false
+    },
+    {
+      "Attribute": "Precision@5",
+      "Metric": "precision",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.2549019607843137,
+      "Recomputed": 0.16405228758169935,
+      "Diff": -0.09084967320261436,
+      "Match": false
+    },
+    {
+      "Attribute": "Recall@5",
+      "Metric": "recall",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.12454610406848825,
+      "Recomputed": 0.1158057633461069,
+      "Diff": -0.008740340722381348,
+      "Match": false
+    },
+    {
+      "Attribute": "Recall@5",
+      "Metric": "recall",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.006659324098309009,
+      "Recomputed": 0.004212467839987603,
+      "Diff": -0.002446856258321406,
+      "Match": false
+    },
+    {
+      "Attribute": "Ndcg@5",
+      "Metric": "ndcg",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.8757231774340563,
+      "Recomputed": 0.8762928454319503,
+      "Diff": 0.0005696679978940411,
+      "Match": false
+    },
+    {
+      "Attribute": "Ndcg@5",
+      "Metric": "ndcg",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.6518046809842547,
+      "Recomputed": 0.6371431927119307,
+      "Diff": -0.014661488272324052,
+      "Match": false
+    },
+    {
+      "Attribute": "Precision@10",
+      "Metric": "precision",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.23952802359882006,
+      "Recomputed": 0.2339233038348083,
+      "Diff": -0.005604719764011751,
+      "Match": false
+    },
+    {
+      "Attribute": "Precision@10",
+      "Metric": "precision",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.3493464052287582,
+      "Recomputed": 0.1823529411764706,
+      "Diff": -0.1669934640522876,
+      "Match": false
+    },
+    {
+      "Attribute": "Recall@10",
+      "Metric": "recall",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.2130641682242411,
+      "Recomputed": 0.20785541434292087,
+      "Diff": -0.005208753881320222,
+      "Match": false
+    },
+    {
+      "Attribute": "Recall@10",
+      "Metric": "recall",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.01815379178653938,
+      "Recomputed": 0.009278975836734796,
+      "Diff": -0.008874815949804585,
+      "Match": false
+    },
+    {
+      "Attribute": "Ndcg@10",
+      "Metric": "ndcg",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.8920178584017241,
+      "Recomputed": 0.8943546116400608,
+      "Diff": 0.0023367532383367084,
+      "Match": false
+    },
+    {
+      "Attribute": "Ndcg@10",
+      "Metric": "ndcg",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.6906783653034279,
+      "Recomputed": 0.659640404110599,
+      "Diff": -0.031037961192828867,
+      "Match": false
+    },
+    {
+      "Attribute": "Precision@20",
+      "Metric": "precision",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.20766961651917407,
+      "Recomputed": 0.2216814159292035,
+      "Diff": 0.014011799410029446,
+      "Match": false
+    },
+    {
+      "Attribute": "Precision@20",
+      "Metric": "precision",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.43823529411764706,
+      "Recomputed": 0.25506535947712417,
+      "Diff": -0.1831699346405229,
+      "Match": false
+    },
+    {
+      "Attribute": "Recall@20",
+      "Metric": "recall",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.3689401056267272,
+      "Recomputed": 0.39359939253874704,
+      "Diff": 0.02465928691201985,
+      "Match": false
+    },
+    {
+      "Attribute": "Recall@20",
+      "Metric": "recall",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.04538018504075797,
+      "Recomputed": 0.025845499970548393,
+      "Diff": -0.019534685070209577,
+      "Match": false
+    },
+    {
+      "Attribute": "Ndcg@20",
+      "Metric": "ndcg",
+      "Team": "Team A (BiasedMF)",
+      "Reported": 0.9065120278972661,
+      "Recomputed": 0.9156187691569502,
+      "Diff": 0.009106741259684026,
+      "Match": false
+    },
+    {
+      "Attribute": "Ndcg@20",
+      "Metric": "ndcg",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.744692973808372,
+      "Recomputed": 0.700071099988732,
+      "Diff": -0.04462187381964,
+      "Match": false
+    },
+    {
+      "Attribute": "average_cost",
+      "Metric": "Economic",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.15749679746873238,
+      "Recomputed": 0.12410852838965024,
+      "Diff": -0.03338826907908214,
+      "Match": false
+    },
+    {
+      "Attribute": "baseline_qos_cost",
+      "Metric": "Economic",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.540336047122681,
+      "Recomputed": 0.5325983344924217,
+      "Diff": -0.007737712630259352,
+      "Match": false
+    },
+    {
+      "Attribute": "cost_savings_pct",
+      "Metric": "Economic",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 70.85206543087187,
+      "Recomputed": 76.69753727113539,
+      "Diff": 5.845471840263514,
+      "Match": false
+    },
+    {
+      "Attribute": "cost_performance_ratio",
+      "Metric": "Economic",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 3.034069246035735,
+      "Recomputed": 3.3721505638927805,
+      "Diff": 0.3380813178570454,
+      "Match": false
+    },
+    {
+      "Attribute": "mean_utility",
+      "Metric": "Economic",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.3435451940578573,
+      "Recomputed": 0.33217912639667785,
+      "Diff": -0.011366067661179424,
+      "Match": false
+    },
+    {
+      "Attribute": "average_confidence",
+      "Metric": "Economic",
+      "Team": "Team B (GraphSAGE)",
+      "Reported": 0.8145499889757118,
+      "Recomputed": 0.831037578434726,
+      "Diff": 0.016487589459014185,
+      "Match": false
+    }
+  ],
+  "statistical_significance": [
+    {
+      "attribute": "availability",
+      "rmse_team_a": 0.22247281670570374,
+      "rmse_team_b": 0.31711283326148987,
+      "t_stat": -83.32002868406238,
+      "p_val": 0.0,
+      "wilcoxon_p": 3.1238515588763265e-272,
+      "cohen_d": -0.1510176807641983,
+      "bootstrap_ci_95_diff": [
+        -0.10360586233437061,
+        -0.08797803297638893
+      ],
+      "significant": true,
+      "winner": "Team A"
+    },
+    {
+      "attribute": "latency",
+      "rmse_team_a": 451.29620361328125,
+      "rmse_team_b": 624.4779663085938,
+      "t_stat": -66.32722604395447,
+      "p_val": 0.0,
+      "wilcoxon_p": 6.787410249300536e-32,
+      "cohen_d": -0.1202182024717331,
+      "bootstrap_ci_95_diff": [
+        -195.13482589721679,
+        -172.53675842285156
+      ],
+      "significant": true,
+      "winner": "Team A"
+    },
+    {
+      "attribute": "reliability",
+      "rmse_team_a": 0.219541534781456,
+      "rmse_team_b": 0.3268789052963257,
+      "t_stat": -136.4712196118821,
+      "p_val": 0.0,
+      "wilcoxon_p": 0.0,
+      "cohen_d": -0.24735428392887115,
+      "bootstrap_ci_95_diff": [
+        -0.11462489031255245,
+        -0.09958426244556905
+      ],
+      "significant": true,
+      "winner": "Team A"
+    },
+    {
+      "attribute": "response_time",
+      "rmse_team_a": 1.5251736640930176,
+      "rmse_team_b": 1.924198865890503,
+      "t_stat": -137.38795479594833,
+      "p_val": 0.0,
+      "wilcoxon_p": 0.0,
+      "cohen_d": -0.24901588261127472,
+      "bootstrap_ci_95_diff": [
+        -0.47129119336605074,
+        -0.40206318795681
+      ],
+      "significant": true,
+      "winner": "Team A"
+    },
+    {
+      "attribute": "throughput",
+      "rmse_team_a": 89.77344512939453,
+      "rmse_team_b": 118.76286315917969,
+      "t_stat": -31.75820904101014,
+      "p_val": 5.639052636806368e-221,
+      "wilcoxon_p": 1.6234309683529583e-10,
+      "cohen_d": -0.05756180360913277,
+      "bootstrap_ci_95_diff": [
+        -30.024041748046876,
+        -26.25944595336914
+      ],
+      "significant": true,
+      "winner": "Team A"
+    }
+  ],
+  "calibration_analysis": {
+    "bins": [
+      {
+        "tier": "Very Low (0.00 - 0.70)",
+        "count": 489,
+        "mean_conf": 0.6647893190383911,
+        "mae": 0.18938790261745453,
+        "rmse": 0.23829053342342377
+      },
+      {
+        "tier": "Low (0.70 - 0.85)",
+        "count": 303911,
+        "mean_conf": 0.8392448425292969,
+        "mae": 0.12271220982074738,
+        "rmse": 0.143838569521904
+      }
+    ],
+    "pearson": -0.0791490226984024,
+    "spearman": -0.019273118208168155,
+    "shift_0_949_to_0_984_verdict": "RANKING_OBJECTIVE_SELECTION_BIAS (Not Predictive Accuracy Improvement)"
+  },
+  "baseline_comparison": {
+    "team_b_greater": [
+      {
+        "metric": "Precision@20",
+        "team_a": 0.2216814159292035,
+        "team_b": 0.25506535947712417,
+        "abs_improvement": 0.03338394354792065,
+        "pct_improvement": 15.059423636387361,
+        "interpretation": "Team B outperforms Team A by 15.06%"
+      },
+      {
+        "metric": "Average Invocation Cost ($)",
+        "team_a": 0.5325983344924217,
+        "team_b": 0.12410852838965024,
+        "abs_improvement": 0.4084898061027714,
+        "pct_improvement": 76.69753727113539,
+        "interpretation": "Team B achieves 76.70% monetary cost savings"
+      },
+      {
+        "metric": "Cost-Performance Ratio",
+        "team_a": 1.0,
+        "team_b": 3.3721505638927805,
+        "abs_improvement": 2.3721505638927805,
+        "pct_improvement": 237.21505638927803,
+        "interpretation": "Team B delivers 3.03x higher QoS-per-dollar efficiency"
+      }
+    ],
+    "team_b_equal": [],
+    "team_b_less": [
+      {
+        "metric": "RMSE (availability)",
+        "team_a": 0.22197622060775757,
+        "team_b": 0.31711283326148987,
+        "abs_deficit": 0.0951366126537323,
+        "pct_deficit": 42.85892083091331,
+        "interpretation": "Team B is -42.86% worse (Team A wins)"
+      },
+      {
+        "metric": "MAE (availability)",
+        "team_a": 0.09261700510978699,
+        "team_b": 0.11881691217422485,
+        "abs_deficit": 0.026199907064437866,
+        "pct_deficit": 28.288441235365834,
+        "interpretation": "Team B is 28.29% worse (Team A wins)"
+      },
+      {
+        "metric": "RMSE (latency)",
+        "team_a": 461.4609680175781,
+        "team_b": 624.4779663085938,
+        "abs_deficit": 163.01699829101562,
+        "pct_deficit": 35.3262810051588,
+        "interpretation": "Team B is -35.33% worse (Team A wins)"
+      },
+      {
+        "metric": "MAE (latency)",
+        "team_a": 223.29234313964844,
+        "team_b": 258.1587829589844,
+        "abs_deficit": 34.86643981933594,
+        "pct_deficit": 15.6147046195535,
+        "interpretation": "Team B is 15.61% worse (Team A wins)"
+      },
+      {
+        "metric": "RMSE (reliability)",
+        "team_a": 0.21877093613147736,
+        "team_b": 0.3268789052963257,
+        "abs_deficit": 0.10810796916484833,
+        "pct_deficit": 49.41605639054239,
+        "interpretation": "Team B is -49.42% worse (Team A wins)"
+      },
+      {
+        "metric": "MAE (reliability)",
+        "team_a": 0.0913441851735115,
+        "team_b": 0.13507068157196045,
+        "abs_deficit": 0.043726496398448944,
+        "pct_deficit": 47.87003826832427,
+        "interpretation": "Team B is 47.87% worse (Team A wins)"
+      },
+      {
+        "metric": "RMSE (response_time)",
+        "team_a": 1.5496885776519775,
+        "team_b": 1.924198865890503,
+        "abs_deficit": 0.3745102882385254,
+        "pct_deficit": 24.166809618353614,
+        "interpretation": "Team B is -24.17% worse (Team A wins)"
+      },
+      {
+        "metric": "MAE (response_time)",
+        "team_a": 0.749634325504303,
+        "team_b": 0.9651148915290833,
+        "abs_deficit": 0.21548056602478027,
+        "pct_deficit": 28.744757102713997,
+        "interpretation": "Team B is 28.74% worse (Team A wins)"
+      },
+      {
+        "metric": "RMSE (throughput)",
+        "team_a": 90.19778442382812,
+        "team_b": 118.76286315917969,
+        "abs_deficit": 28.565078735351562,
+        "pct_deficit": 31.669379594877654,
+        "interpretation": "Team B is -31.67% worse (Team A wins)"
+      },
+      {
+        "metric": "MAE (throughput)",
+        "team_a": 42.253353118896484,
+        "team_b": 45.57133102416992,
+        "abs_deficit": 3.3179779052734375,
+        "pct_deficit": 7.852578932462466,
+        "interpretation": "Team B is 7.85% worse (Team A wins)"
+      },
+      {
+        "metric": "Precision@5",
+        "team_a": 0.26135693215339234,
+        "team_b": 0.16405228758169935,
+        "abs_deficit": 0.097304644571693,
+        "pct_deficit": 37.23055813747621,
+        "interpretation": "Team B underperforms Team A by 37.23%"
+      },
+      {
+        "metric": "Recall@5",
+        "team_a": 0.1158057633461069,
+        "team_b": 0.004212467839987603,
+        "abs_deficit": 0.1115932955061193,
+        "pct_deficit": 96.36247133279726,
+        "interpretation": "Team B underperforms Team A by 96.36%"
+      },
+      {
+        "metric": "Ndcg@5",
+        "team_a": 0.8762928454319503,
+        "team_b": 0.6371431927119307,
+        "abs_deficit": 0.23914965272001965,
+        "pct_deficit": 27.291065306157535,
+        "interpretation": "Team B underperforms Team A by 27.29%"
+      },
+      {
+        "metric": "Precision@10",
+        "team_a": 0.2339233038348083,
+        "team_b": 0.1823529411764706,
+        "abs_deficit": 0.0515703626583377,
+        "pct_deficit": 22.045842296565542,
+        "interpretation": "Team B underperforms Team A by 22.05%"
+      },
+      {
+        "metric": "Recall@10",
+        "team_a": 0.20785541434292087,
+        "team_b": 0.009278975836734796,
+        "abs_deficit": 0.1985764385061861,
+        "pct_deficit": 95.53585079028718,
+        "interpretation": "Team B underperforms Team A by 95.54%"
+      },
+      {
+        "metric": "Ndcg@10",
+        "team_a": 0.8943546116400608,
+        "team_b": 0.659640404110599,
+        "abs_deficit": 0.23471420752946182,
+        "pct_deficit": 26.243975764718723,
+        "interpretation": "Team B underperforms Team A by 26.24%"
+      },
+      {
+        "metric": "Recall@20",
+        "team_a": 0.39359939253874704,
+        "team_b": 0.025845499970548393,
+        "abs_deficit": 0.3677538925681986,
+        "pct_deficit": 93.43355186504661,
+        "interpretation": "Team B underperforms Team A by 93.43%"
+      },
+      {
+        "metric": "Ndcg@20",
+        "team_a": 0.9156187691569502,
+        "team_b": 0.700071099988732,
+        "abs_deficit": 0.21554766916821821,
+        "pct_deficit": 23.541202564762003,
+        "interpretation": "Team B underperforms Team A by 23.54%"
+      }
+    ]
+  },
+  "reproducibility": {
+    "seeds_fixed": true,
+    "seed_value": 42,
+    "dataset_public": true,
+    "dataset_source": "WS-DREAM Benchmark Dataset #1",
+    "missing_hyperparams": [],
+    "reproducibility_score": "95/100"
+  }
+}

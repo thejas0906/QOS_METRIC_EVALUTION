@@ -37,5 +37,7 @@ results/logs/*.log
 results/checkpoints/*
 
 
-PROJECT_PROMPT_FOR_GPT.md
+
+*.md
+!README.md
 
