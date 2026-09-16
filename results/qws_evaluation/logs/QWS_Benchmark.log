@@ -1,0 +1,75 @@
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark] =================================================================
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark]   STARTING QWS 2.0 DATASET BENCHMARK (2,507 WEB SERVICES)
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark] =================================================================
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark] Loaded QWS dataset: 200 users x 2507 real services.
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark]  - [availability   ] min=0.0500, max=1.0000, mean=0.8111
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark]  - [latency        ] min=0.5000, max=4257.6416, mean=84.5270
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark]  - [reliability    ] min=0.2643, max=0.9493, mean=0.6978
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark]  - [response_time  ] min=0.0415, max=8.4579, mean=0.5372
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark]  - [throughput     ] min=0.0500, max=94.7397, mean=9.2519
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark] Generated QWS service costs: range [$0.01, $1.00], mean=$0.50
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark] >>> Training Team A (BiasedMF) on QWS dataset...
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark] Team A Sparsity Mask - Observed: 50140, Train: 35098, Val: 5014, Test: 10028
+2026-09-16 17:17:33 [INFO] [QWS_Benchmark] Fitting BiasedMF on QWS attribute [availability]...
+2026-09-16 17:17:35 [INFO] [QWS_Benchmark] Fitting BiasedMF on QWS attribute [latency]...
+2026-09-16 17:17:37 [INFO] [QWS_Benchmark] Fitting BiasedMF on QWS attribute [reliability]...
+2026-09-16 17:17:38 [INFO] [QWS_Benchmark] Fitting BiasedMF on QWS attribute [response_time]...
+2026-09-16 17:17:40 [INFO] [QWS_Benchmark] Fitting BiasedMF on QWS attribute [throughput]...
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] === Team A (BiasedMF) QWS Results ===
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] [availability] RMSE: 0.0358 | MAE: 0.0276
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] [latency] RMSE: 60.9001 | MAE: 19.8100
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] [reliability] RMSE: 0.0343 | MAE: 0.0269
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] [response_time] RMSE: 0.1319 | MAE: 0.0721
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] [throughput] RMSE: 3.0555 | MAE: 2.0110
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] Top-5 -> Prec: 0.9170 | Rec: 0.4441 | NDCG: 0.9877
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] Top-10 -> Prec: 0.7665 | Rec: 0.7390 | NDCG: 0.9902
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] Top-20 -> Prec: 0.5005 | Rec: 0.9601 | NDCG: 0.9932
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] >>> Training Team B (HeteroGraphSAGE) on QWS dataset...
+2026-09-16 17:17:42 [INFO] [QWS_Benchmark] Team B QWS Interaction Edges - Train: 284382, Val: 40626, Test: 81252
+2026-09-16 17:17:46 [INFO] [QWS_Benchmark] Training HeteroGraphSAGE on QWS for 25 epochs...
+2026-09-16 17:17:47 [INFO] [QWS_Benchmark] Epoch 01/25 | Train Loss: 0.7480 | Val Loss: 0.6994
+2026-09-16 17:17:50 [INFO] [QWS_Benchmark] Epoch 05/25 | Train Loss: 0.6933 | Val Loss: 0.6630
+2026-09-16 17:17:54 [INFO] [QWS_Benchmark] Epoch 10/25 | Train Loss: 0.6694 | Val Loss: 0.6436
+2026-09-16 17:17:59 [INFO] [QWS_Benchmark] Epoch 15/25 | Train Loss: 0.6532 | Val Loss: 0.6288
+2026-09-16 17:18:03 [INFO] [QWS_Benchmark] Epoch 20/25 | Train Loss: 0.6398 | Val Loss: 0.6152
+2026-09-16 17:18:08 [INFO] [QWS_Benchmark] Epoch 25/25 | Train Loss: 0.6275 | Val Loss: 0.6029
+2026-09-16 17:18:08 [INFO] [QWS_Benchmark] Loaded best QWS Team B checkpoint from epoch 25
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] === Team B (HeteroGraphSAGE) QWS Results ===
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] [availability] RMSE: 0.1860 | MAE: 0.1367
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] [latency] RMSE: 202.6963 | MAE: 81.8584
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] [reliability] RMSE: 0.0895 | MAE: 0.0646
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] [response_time] RMSE: 0.5769 | MAE: 0.3155
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] [throughput] RMSE: 10.7089 | MAE: 7.0084
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] Top-5 -> Prec: 0.0000 | Rec: 0.0000 | NDCG: 0.8365
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] Top-10 -> Prec: 0.0000 | Rec: 0.0000 | NDCG: 0.8502
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] Top-20 -> Prec: 0.0006 | Rec: 0.0001 | NDCG: 0.8649
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] Economic -> Avg Cost: $0.2183 | Savings: 56.51% | CP Ratio: 2.2404 | Confidence: 0.8380
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] Saved QWS comparative summary CSV to results/qws_evaluation\qws_comparative_summary.csv
+2026-09-16 17:18:09 [INFO] [QWS_Benchmark] >>> Generating publication-quality figures for QWS dataset...
+2026-09-16 17:18:16 [INFO] [QWS_Benchmark] Saved QWS Benchmark Report to results/qws_evaluation\QWS_BENCHMARK_REPORT.md
+2026-09-16 17:18:16 [INFO] [QWS_Benchmark] =================================================================
+2026-09-16 17:18:16 [INFO] [QWS_Benchmark]   QWS 2.0 BENCHMARK COMPLETED SUCCESSFULLY!
+2026-09-16 17:18:16 [INFO] [QWS_Benchmark] =================================================================
+2026-09-16 17:28:48 [INFO] [QWS_Benchmark] =================================================================
+2026-09-16 17:28:48 [INFO] [QWS_Benchmark]   STARTING CALIBRATED QWS 2.0 BENCHMARK (2,507 WEB SERVICES)
+2026-09-16 17:28:48 [INFO] [QWS_Benchmark] =================================================================
+2026-09-16 17:28:48 [INFO] [QWS_Benchmark] Loaded QWS dataset: 200 users x 2507 real services.
+2026-09-16 17:28:48 [INFO] [QWS_Benchmark] >>> Training Team A (BiasedMF) on QWS dataset...
+2026-09-16 17:28:56 [INFO] [QWS_Benchmark] >>> Training Team B (HeteroGraphSAGE) with calibrated decoder on QWS...
+2026-09-16 17:29:00 [INFO] [QWS_Benchmark] Epoch 01/35 | Train Loss: 1.1269 | Val Loss: 1.0724
+2026-09-16 17:29:07 [INFO] [QWS_Benchmark] Epoch 10/35 | Train Loss: 1.0003 | Val Loss: 0.9760
+2026-09-16 17:29:16 [INFO] [QWS_Benchmark] Epoch 20/35 | Train Loss: 0.9711 | Val Loss: 0.9404
+2026-09-16 17:29:24 [INFO] [QWS_Benchmark] Epoch 30/35 | Train Loss: 0.8976 | Val Loss: 0.8469
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] === Team B Calibrated QWS Recommendation (QoS-Only Matched) ===
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] Top-5 -> Prec: 0.5333 | Rec: 0.0294 | NDCG: 0.5494
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] Top-10 -> Prec: 0.4922 | Rec: 0.0543 | NDCG: 0.5150
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] Top-20 -> Prec: 0.4711 | Rec: 0.1040 | NDCG: 0.4921
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] === Team B Calibrated QWS Recommendation (Cost-Aware Utility) ===
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] Top-5 -> Prec: 0.0011 | Rec: 0.0001 | NDCG: 0.0007
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] Top-10 -> Prec: 0.0106 | Rec: 0.0012 | NDCG: 0.0072
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] Top-20 -> Prec: 0.0322 | Rec: 0.0071 | NDCG: 0.0234
+2026-09-16 17:29:29 [INFO] [QWS_Benchmark] >>> Generating corrected publication-quality figures for QWS...
+2026-09-16 17:29:34 [INFO] [QWS_Benchmark] Saved calibrated QWS Benchmark Report to results/qws_evaluation\QWS_BENCHMARK_REPORT.md
+2026-09-16 17:29:34 [INFO] [QWS_Benchmark] =================================================================
+2026-09-16 17:29:34 [INFO] [QWS_Benchmark]   CALIBRATED QWS BENCHMARK COMPLETED SUCCESSFULLY!
+2026-09-16 17:29:34 [INFO] [QWS_Benchmark] =================================================================
